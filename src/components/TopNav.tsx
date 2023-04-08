@@ -69,7 +69,7 @@ const TopNav: React.FC<TopNavProps> = ({
 						flex: 1,
 						alignItems: "center",
 						cursor: "pointer",
-						// height: "10px",
+						minHeight: "15px",
 						// borderRadius: "5px",
 						// overflow: "hidden",
 					}}

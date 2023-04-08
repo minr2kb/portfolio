@@ -1,8 +1,9 @@
 import React from "react";
 import { Divider, Grid, Typography } from "@mui/material";
 import { FontWeightValues } from "../interface/types";
+import { SectionProps } from "../interface/interfaces";
 
-const Footer = () => {
+const Footer: React.FC<SectionProps> = ({ isMobile }) => {
 	return (
 		<Grid>
 			<Divider flexItem />
@@ -23,13 +24,14 @@ const Footer = () => {
 				>
 					© 2023 All rights reserved.
 				</Typography>
+
 				<Typography
 					sx={{
 						fontSize: 14,
 						fontWeight: FontWeightValues.REGULAR,
 					}}
 				>
-					Developed by. @minr2_kb
+					{!isMobile && "Developed by. "} @minr2_kb
 				</Typography>
 			</Grid>
 		</Grid>

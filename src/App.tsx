@@ -264,7 +264,7 @@ function App() {
 
 							{/* SECTION: Footer */}
 							<Grid pt={10} component={"footer"}>
-								<Footer />
+								<Footer isMobile={isMobile} />
 							</Grid>
 						</Grid>
 						{/* <Box

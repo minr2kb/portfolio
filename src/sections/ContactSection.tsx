@@ -3,7 +3,6 @@ import React from "react";
 import { SectionProps } from "../interface/interfaces";
 
 import { Call, Email, GitHub, Instagram, LinkedIn } from "@mui/icons-material";
-import { FontWeightValues } from "../interface/types";
 
 const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 	return (
