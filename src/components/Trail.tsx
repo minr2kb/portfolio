@@ -4,18 +4,13 @@ import { FontWeightValues } from "../interface/types";
 
 export interface TrailProps {
 	open: boolean;
-	fontStyle?: {
-		fontSize: number;
-		fontWeight: FontWeightValues;
-		color?: string;
-	};
 	spacing?: number;
 	children: React.ReactNode;
 }
 
 const Trail: React.FC<TrailProps> = ({
 	open,
-	fontStyle = { fontSize: 60, fontWeight: FontWeightValues.BOLD },
+
 	spacing = 0,
 	children,
 }) => {
@@ -24,29 +19,28 @@ const Trail: React.FC<TrailProps> = ({
 		config: { mass: 5, tension: 2500, friction: 200 },
 		opacity: open ? 1 : 0,
 		x: open ? 0 : 20,
-		height: open ? fontStyle.fontSize * 1.2 + spacing : 0,
-		from: { opacity: 0, x: 20, height: 0 },
+		from: { opacity: 0, x: 20 },
 	});
 	return (
 		<div>
-			{trail.map(({ height, ...style }, index) => (
+			{trail.map(({ ...style }, index) => (
 				<a.div
 					key={index}
 					style={{
 						position: "relative",
 						width: "100%",
-						height: `${fontStyle.fontSize * 1.2}px`,
-						lineHeight: `${fontStyle.fontSize * 1.2}px`,
+						// height: "auto",
+						// lineHeight: `${fontStyle.fontSize * 1.2}px`,
 						color: "#333",
 						// letterSpacing: "-0.05em",
 						willChange: "transform, opacity",
 						overflow: "hidden",
-						...fontStyle,
-						...style,
+						overflowWrap: "break-word",
 						marginBottom: spacing,
+						...style,
 					}}
 				>
-					<a.div style={{ height }}>{items[index]}</a.div>
+					<div>{items[index]}</div>
 				</a.div>
 			))}
 		</div>

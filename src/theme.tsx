@@ -125,6 +125,7 @@ const getTheme = (mode: ThemeMode, isMobile?: boolean) =>
 			body1: {
 				fontSize: isMobile ? 18 : 22,
 				fontWeight: FontWeightValues.REGULAR,
+				wordBreak: "keep-all",
 			},
 			body2: {
 				fontSize: isMobile ? 16 : 20,

@@ -12,12 +12,7 @@ import {
 } from "@mui/material";
 import { SectionProps } from "../interface/interfaces";
 
-import {
-	KeyboardArrowDown,
-	KeyboardArrowUp,
-	Link,
-	LinkOff,
-} from "@mui/icons-material";
+import { KeyboardArrowDown, KeyboardArrowUp, Link } from "@mui/icons-material";
 import RatioBox from "../components/RatioBox";
 
 export interface ProjectBlockProps {
@@ -66,19 +61,19 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 				</Grid>
 			</RatioBox>
 			<Grid container alignItems={"center"} mt={2}>
-				<Typography variant="h3">{title}</Typography>
+				<Typography variant="h3">
+					{title}
 
-				<Tooltip arrow title={link || "링크가 없습니다"}>
-					<Box>
-						<IconButton
-							href={link || ""}
-							target="_blank"
-							disabled={!link}
-						>
-							{link ? <Link htmlColor="#999" /> : <LinkOff />}
-						</IconButton>
-					</Box>
-				</Tooltip>
+					{link && (
+						<Tooltip arrow title={link}>
+							<Box sx={{ display: "inline-block" }}>
+								<IconButton href={link} target="_blank">
+									<Link htmlColor="#999" />
+								</IconButton>
+							</Box>
+						</Tooltip>
+					)}
+				</Typography>
 			</Grid>
 			<Grid container>
 				{cateTag && (
@@ -196,6 +191,7 @@ const projects: ProjectBlockProps[] = [
 		description: `72시간 동안 진행된 해커톤에서 개발한 프로젝트입니다. Plog-In은 플로깅을 통해 환경을 보호하고, 기록을 관리하는 플랫폼입니다. 빠른 개발을 위해 JavaScript로 프로젝트를 구성하였으며 구글맵 API를 활용하여 위치를 트래킹 할 수 있도록 구현하였습니다. 플로깅을 시작하면 실시간으로 시간과 위치를 기록하고, 자바스크립트로 구현한 거리 계산 알고리즘을 기반으로 거리와 경로를 기록합니다. Cleanest UI/UX분야에서 수상을 하였습니다.`,
 		image: "/images/plog-in.png",
 		skills: ["ReactJS", "JavaScript", "FastAPI", "GCP", "MongoDB"],
+		link: "https://github.com/minr2kb/2022-sbu-hackathon",
 		cateTag: "Hackathon",
 	},
 
@@ -204,6 +200,7 @@ const projects: ProjectBlockProps[] = [
 		description: `24시간 동안 진행된 해커톤에서 개발한 프로젝트입니다. 삭제되지 않은 이메일들이 서버에 쌓이며 큰 전력을 소비하고 있다는 환경적 이슈에 착안하여 기획한 웹 캠페인으로, 유저가 쉽게 이메일을 삭제할 수 있도록 도와주는 서비스입니다. Gmail API를 활용하여 사용자의 이메일에 접근했으며, 자체적으로 제공한 UI를 통해 유저가 부여한 조건에 맞추어 이메일을 삭제합니다. 캠페인적인 요소를 위해 감소된 CO2 배출량 계산등의 UI가 추가되었습니다. 최우수상을 수상하였습니다.`,
 		image: "/images/e4e.png",
 		skills: ["ReactJS", "JavaScript", "GitHub Pages", "FastAPI"],
+		link: "https://github.com/minr2kb/22S-hackathon-team5",
 		cateTag: "Hackathon",
 	},
 	{
