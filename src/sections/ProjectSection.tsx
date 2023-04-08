@@ -83,7 +83,7 @@ const projects: ProjectBlockProps[] = [
 	},
 	{
 		title: "ZCL 어드민 대시보드",
-		description: `컴퓨터 비젼을 기반으로 한 무인 물류 관리 시스템의 관리자 대시보드를 제작했습니다. 풀스택으로 담당하여 ReactJS와 CoreUI를 활용하여 UI를 기획 및 구축하였고, Flask와 MySQL을 활용하여 백엔드를 구축하였습니다. 실시간으로 DB에 들어오는 물류 데이터를 차트를 활용하여 시각화하는 기능에 중점을 두고 작업했습니다.`,
+		description: `컴퓨터 비젼을 기반으로 한 무인 물류 관리 시스템의 관리자 대시보드를 제작했습니다. 풀스택으로 담당하여 ReactJS와 CoreUI를 활용하여 UI를 기획 및 구축하였고, Flask와 MySQL을 활용하여 백엔드를 구축하였습니다. 실시간으로 DB에 들어오는 물류 현황과 수요 예측 모델 데이터를 차트를 활용하여 시각화하는 기능에 중점을 두었습니다.`,
 		image: "/images/zcl-admin-dashboard.png",
 		skills: ["ReactJS", "JavaScript", "Redux", "CoreUI", "Flask", "MySQL"],
 		cateTag: "ZeroClassLab",
@@ -211,11 +211,6 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 								>
 									<Link
 										htmlColor="#999"
-										// sx={{
-										// 	fontSize: isMobile
-										// 		? "small"
-										// 		: "medium",
-										// }}
 										fontSize={isMobile ? "small" : "medium"}
 									/>
 								</IconButton>
