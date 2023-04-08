@@ -109,7 +109,7 @@ const getTheme = (mode: ThemeMode, isMobile?: boolean) =>
 				wordBreak: "keep-all",
 			},
 			h3: {
-				fontSize: isMobile ? 22 : 32,
+				fontSize: isMobile ? 24 : 32,
 				fontWeight: FontWeightValues.BOLD,
 				lineHeight: 1.5,
 				letterSpacing: "0.015em",

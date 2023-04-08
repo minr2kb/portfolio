@@ -15,104 +15,6 @@ import { SectionProps } from "../interface/interfaces";
 import { KeyboardArrowDown, KeyboardArrowUp, Link } from "@mui/icons-material";
 import RatioBox from "../components/RatioBox";
 
-export interface ProjectBlockProps {
-	title: string;
-	description: string;
-	image: string;
-	link?: string;
-	skills: string[];
-	cateTag?: string;
-}
-
-const ProjectBlock: React.FC<ProjectBlockProps> = ({
-	title,
-	description,
-	image,
-	link,
-	skills,
-	cateTag,
-}) => {
-	return (
-		<Grid py={5}>
-			<RatioBox ratio={2.4}>
-				<Grid
-					sx={{
-						overflow: "hidden",
-						width: "100%",
-						height: "100%",
-						borderRadius: "10px",
-						"&:hover img": {
-							transform: "scale(1.05)",
-						},
-					}}
-				>
-					<img
-						src={image}
-						alt="project"
-						style={{
-							transition: "all 0.2s ease-in-out",
-							width: "100%",
-							height: "100%",
-							borderRadius: "10px",
-							objectFit: "cover",
-							objectPosition: "center center",
-						}}
-					/>
-				</Grid>
-			</RatioBox>
-			<Grid container alignItems={"center"} mt={2}>
-				<Typography variant="h3">
-					{title}
-
-					{link && (
-						<Tooltip arrow title={link}>
-							<Box sx={{ display: "inline-block" }}>
-								<IconButton href={link} target="_blank">
-									<Link htmlColor="#999" />
-								</IconButton>
-							</Box>
-						</Tooltip>
-					)}
-				</Typography>
-			</Grid>
-			<Grid container>
-				{cateTag && (
-					<Chip
-						variant="outlined"
-						label={cateTag}
-						clickable
-						size="small"
-						color="secondary"
-						sx={{ mr: 1, mt: 1 }}
-					/>
-				)}
-				{skills.map(skill => {
-					return (
-						<Chip
-							key={`${title}-${skill}`}
-							variant="outlined"
-							label={skill}
-							clickable
-							size="small"
-							color="primary"
-							sx={{ mr: 1, mt: 1 }}
-						/>
-					);
-				})}
-			</Grid>
-			<Typography
-				variant="body2"
-				sx={{
-					mt: 2,
-				}}
-				color={"text.secondary"}
-			>
-				{description}
-			</Typography>
-		</Grid>
-	);
-};
-
 const projects: ProjectBlockProps[] = [
 	{
 		title: "내일의창업",
@@ -243,7 +145,124 @@ const projects: ProjectBlockProps[] = [
 	},
 ];
 
-const ProjectSection: React.FC<SectionProps> = () => {
+export interface ProjectBlockProps {
+	title: string;
+	description: string;
+	image: string;
+	link?: string;
+	skills: string[];
+	cateTag?: string;
+	isMobile?: boolean;
+}
+
+const ProjectBlock: React.FC<ProjectBlockProps> = ({
+	title,
+	description,
+	image,
+	link,
+	skills,
+	cateTag,
+	isMobile,
+}) => {
+	return (
+		<Grid py={5}>
+			<RatioBox ratio={2.4}>
+				<Grid
+					sx={{
+						overflow: "hidden",
+						width: "100%",
+						height: "100%",
+						borderRadius: "10px",
+						"&:hover img": {
+							transform: "scale(1.05)",
+						},
+					}}
+				>
+					<img
+						src={image}
+						alt="project"
+						style={{
+							transition: "all 0.2s ease-in-out",
+							width: "100%",
+							height: "100%",
+							borderRadius: "10px",
+							objectFit: "cover",
+							objectPosition: "center center",
+						}}
+					/>
+				</Grid>
+			</RatioBox>
+			<Grid mt={2}>
+				<Typography variant="h3">
+					{title}
+
+					{link && (
+						<Tooltip arrow title={link}>
+							<Grid
+								sx={{
+									display: "inline-flex",
+									ml: 0.5,
+								}}
+							>
+								<IconButton
+									size={"small"}
+									href={link}
+									target="_blank"
+								>
+									<Link
+										htmlColor="#999"
+										// sx={{
+										// 	fontSize: isMobile
+										// 		? "small"
+										// 		: "medium",
+										// }}
+										fontSize={isMobile ? "small" : "medium"}
+									/>
+								</IconButton>
+							</Grid>
+						</Tooltip>
+					)}
+				</Typography>
+			</Grid>
+			<Grid container>
+				{cateTag && (
+					<Chip
+						variant="outlined"
+						label={cateTag}
+						clickable
+						size="small"
+						color="secondary"
+						sx={{ mr: 1, mt: 1 }}
+					/>
+				)}
+				{skills.map(skill => {
+					return (
+						<Chip
+							key={`${title}-${skill}`}
+							variant="outlined"
+							label={skill}
+							clickable
+							size="small"
+							color="primary"
+							sx={{ mr: 1, mt: 1 }}
+						/>
+					);
+				})}
+			</Grid>
+			<Typography
+				variant="body2"
+				sx={{
+					mt: 2,
+				}}
+				color={"text.secondary"}
+			>
+				{description}
+			</Typography>
+		</Grid>
+	);
+};
+
+const ProjectSection: React.FC<SectionProps> = ({ isMobile }) => {
 	const [viewMore, setViewMore] = useState(false);
 	return (
 		<Grid>
@@ -259,6 +278,7 @@ const ProjectSection: React.FC<SectionProps> = () => {
 					skills={project.skills}
 					link={project.link}
 					cateTag={project.cateTag}
+					isMobile={isMobile}
 				/>
 			))}
 
@@ -277,6 +297,7 @@ const ProjectSection: React.FC<SectionProps> = () => {
 						skills={project.skills}
 						link={project.link}
 						cateTag={project.cateTag}
+						isMobile={isMobile}
 					/>
 				))}
 			</Collapse>

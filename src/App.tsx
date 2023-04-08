@@ -1,17 +1,9 @@
 import React, { useRef, useState } from "react";
-import {
-	CssBaseline,
-	Grid,
-	ThemeProvider,
-	Typography,
-	useMediaQuery,
-} from "@mui/material";
+import { CssBaseline, Grid, ThemeProvider, useMediaQuery } from "@mui/material";
 
 import { animated, useScroll } from "@react-spring/web";
 import getTheme, { mobileMaxWidthMediaQuery } from "./theme";
-import Trail from "./components/Trail";
-import RotatingText from "./components/RotatingText";
-import { TypeAnimation } from "react-type-animation";
+
 import useRangeSwitch from "./utils/useRangeSwitch";
 import TopNav from "./components/TopNav";
 
@@ -22,13 +14,13 @@ import Footer from "./sections/Footer";
 import ContactSection from "./sections/ContactSection";
 import { ThemeMode } from "./interface/types";
 import ExperienceSection from "./sections/ExperienceSection";
+import IntroSection from "./sections/IntroSection";
 
 function App() {
 	const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
 	const containerRef = useRef<HTMLDivElement>(null!);
 	const innerRef = useRef<HTMLDivElement>(null!);
 
-	const [openTrail, onTrailRange] = useRangeSwitch();
 	const [openText, onTextRange] = useRangeSwitch();
 	const [openAcaTexts, onAcaTextsRange] = useRangeSwitch();
 	const [openExeTexts, onExeTextsRange] = useRangeSwitch();
@@ -41,7 +33,7 @@ function App() {
 		container: containerRef,
 		onChange: ({ value: { scrollY } }) => {
 			setStartedScroll(scrollY > 0);
-			onTrailRange(scrollY, 300);
+
 			onTextRange(scrollY, 4200, 5000);
 			onAcaTextsRange(scrollY, 500);
 			onExeTextsRange(scrollY, 900);
@@ -86,75 +78,13 @@ function App() {
 						<Grid
 							sx={{
 								position: "relative",
-								// height: "700vh",
 							}}
 						>
 							{/* SECTION: Intro */}
-							<Grid
-								container
-								height={"90vh"}
-								flexDirection={isMobile ? "column" : "row"}
-								justifyContent={isMobile ? "center" : "start"}
-								alignItems={isMobile ? "start" : "center"}
-								// ref={ref => {
-								// 	if (ref && !sectionHeights.intro)
-								// 		setSectionHeights(prev => ({
-								// 			...prev,
-								// 			intro: ref.offsetTop,
-								// 		}));
-								// }}
-							>
-								<img
-									src="/images/memoji.png"
-									alt="미모지"
-									// width={isMobile ? "200px" : "300px"}
-									height={isMobile ? "200px" : "300px"}
-								/>
-								<Grid>
-									<Typography variant="h1">
-										안녕하세요
-									</Typography>
-
-									<Typography variant="h1">
-										{/* 저는{" "} */}
-										<RotatingText
-											texts={[
-												"도전하는",
-												"꼼꼼한",
-												"재미를 쫒는",
-												"새로움을 찾는",
-											]}
-											textSx={{
-												background:
-													"linear-gradient(to right, #30CFD0 0%, #330867 100%)",
-												WebkitBackgroundClip: "text",
-												WebkitTextFillColor:
-													"transparent",
-											}}
-										/>{" "}
-										FE 개발자
-									</Typography>
-
-									<Typography variant="h1">
-										민경배입니다
-									</Typography>
-								</Grid>
+							<Grid id={"intro"}>
+								<IntroSection isMobile={isMobile} />
 							</Grid>
 
-							{/* <Grid mt={10}>
-							<Trail
-								open={openTrail}
-								fontStyle={{
-									fontSize: isMobile ? 32 : 60,
-									fontWeight: FontWeightValues.BOLD,
-								}}
-							>
-								<span>너와 나의 연결 고리</span>
-								<span>이건 우리 안의 소리</span>
-								<span>너와 나의 연결 고리</span>
-								<span>이건 우리 안의 소리</span>
-							</Trail>
-						</Grid> */}
 							{/* <Grid mt={10}>
 							<TypeAnimation
 								sequence={[
