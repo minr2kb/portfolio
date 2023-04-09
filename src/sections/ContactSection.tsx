@@ -20,7 +20,7 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 					alignItems={"center"}
 					mt={2}
 					component={"a"}
-					target="_blanc"
+					target="_blank"
 					href={"tel:01045541664"}
 					sx={{ textDecoration: "none", color: "inherit" }}
 				>
