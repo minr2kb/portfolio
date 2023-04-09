@@ -38,7 +38,7 @@ const projects: ProjectBlockProps[] = [
 		title: "태그히어",
 		description: `NFC를 활용한 스마트 테이블 오더 서비스, "태그히어" 개발의 프론트엔드를 담당하였습니다. 메뉴, 주문하기, 수정하기, 어드민 대시보드 등의 전반적 페이지 및 기능 개발을 주도하였고, 모노레포를 활용하여 컴포넌트 디자인했습니다. 포스기 사양을 고려하여 일부코드를 polyfill로 구현하였으며, 테이블과 포스기간의 실시간 통신을 위하여 소켓 통신을 사용했습니다. NFC보안을 위하여 위치 검증 및 상태 관리를 통한 접근 제어 방식을 고안하였습니다. JWT를 활용한 인증과 권한 관리를 구현하였으며, PG 결제 시스템을 구축했습니다.`,
 		image: "/images/taghere.png",
-		link: "https://taghere.com",
+		link: "https://tag-here.com",
 		skills: [
 			"ReactJS",
 			"TypeScript",
