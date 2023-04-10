@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Grid, useMediaQuery } from "@mui/material";
 import { mobileMaxWidthMediaQuery } from "../theme";
 
@@ -42,6 +42,11 @@ const Home = () => {
 			immediate: true,
 		},
 	});
+	useEffect(() => {
+		document
+			.querySelector('meta[name="theme-color"]')
+			?.setAttribute("content", "#1ECCA2");
+	}, []);
 	return (
 		<Grid ref={containerRef} sx={{ height: "100vh", overflow: "auto" }}>
 			{/* Outer Container */}
