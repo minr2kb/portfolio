@@ -41,7 +41,7 @@ const FlippableCard: React.FC<FlippableCardProps> = ({
 					isActive ? "-90" : "0"
 				}deg)`,
 				boxShadow: isActive
-					? "none" //"-20px 0px 20px 10px rgba(0, 0, 0, 0.4)"
+					? "-20px 0px 20px 10px rgba(0, 0, 0, 0.2)"
 					: "0px 20px 20px 7px rgba(0, 0, 0, 0.2)",
 				borderRadius: "10px",
 			}}
@@ -80,6 +80,7 @@ const FlippableCard: React.FC<FlippableCardProps> = ({
 						"0%": { left: 0, opacity: 0 },
 						"5%": { opacity: 0.4 },
 						"10%": { left: width - 100, opacity: 0 },
+						"11%": { left: 0, opacity: 0 },
 					},
 				}}
 			/>

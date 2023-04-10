@@ -57,7 +57,7 @@ const BackContent = () => {
 							color: themeColor,
 						}}
 					>
-						010.4554.1664
+						010-4554-1664
 					</Typography>
 					<Typography
 						sx={{
