@@ -179,7 +179,8 @@ const BusinessCard = () => {
 									👨‍💻 TMR FOUNDERS ☕️ TMR FOUNDERS 🍚 TMR
 									FOUNDERS 🏢 TMR FOUNDERS ⏰ TMR FOUNDERS 💡
 									TMR FOUNDERS 📑 TMR FOUNDERS 🧢 TMR FOUNDERS
-									🤖 🏆
+									🤖 TMR FOUNDERS 🏆 TMR FOUNDERS 🍷 TMR
+									FOUNDERS 🔥
 								</textPath>
 							</text>
 						</svg>
