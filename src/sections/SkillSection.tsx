@@ -77,16 +77,25 @@ const SkillList: React.FC<{
 	return (
 		<>
 			{skills.map(skill => (
-				<Grid container alignItems={"center"} mt={2} key={skill.name}>
-					<Typography
-						color={"text.secondary"}
-						variant="body1"
-						sx={{
-							mr: 2,
-						}}
-					>
+				<Grid
+					container
+					alignItems={"center"}
+					// justifyContent={"space-between"}
+					mt={2}
+					key={skill.name}
+				>
+					<Typography color={"text.secondary"} variant="body1">
 						{skill.name}
 					</Typography>
+					<Grid
+						container
+						flex={1}
+						sx={{
+							height: "50%",
+							border: "dashed 0.5px #CCC",
+							mx: 2,
+						}}
+					/>
 					<Rating
 						defaultValue={skill.rating}
 						precision={0.5}
@@ -106,7 +115,7 @@ const SkillSection: React.FC<SectionProps> = () => {
 			<Typography variant="h2">Skills</Typography>
 			<Divider />
 			<TagSphere />
-			<Grid container>
+			<Grid container columnSpacing={3}>
 				<Grid mb={5} item xs={12} sm={4}>
 					<Typography variant="h3">개발 스택</Typography>
 					<SkillList skills={devSkills} />
