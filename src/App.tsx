@@ -5,7 +5,6 @@ import getTheme, { mobileMaxWidthMediaQuery } from "./theme";
 import { ThemeMode } from "./interface/types";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
-import BusinessCard from "./pages/BusinessCard";
 
 function App() {
 	const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
@@ -14,10 +13,6 @@ function App() {
 		{
 			path: "/",
 			element: <Home />,
-		},
-		{
-			path: "/card",
-			element: <BusinessCard />,
 		},
 	]);
 
