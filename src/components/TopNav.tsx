@@ -116,7 +116,16 @@ const TopNav: React.FC<TopNavProps> = ({
 							<animated.div
 								style={{
 									width: scrollY.to(
-										val => `${(val / pageHeight) * 100}%`
+										val =>
+											`${
+												Math.max(
+													Math.min(
+														val / pageHeight,
+														1
+													),
+													0
+												) * 100
+											}%`
 									),
 									height: "1px",
 									backgroundColor: " #1ECCA2",
@@ -126,7 +135,15 @@ const TopNav: React.FC<TopNavProps> = ({
 								style={{
 									width: scrollY.to(
 										val =>
-											`${(1 - val / pageHeight) * 100}%`
+											`${
+												Math.max(
+													Math.min(
+														1 - val / pageHeight,
+														1
+													),
+													0
+												) * 100
+											}%`
 									),
 									height: "1px",
 									backgroundColor: "rgba(0,0,0,0.2)",
@@ -135,23 +152,36 @@ const TopNav: React.FC<TopNavProps> = ({
 						</>
 					)}{" "}
 				</Grid>
-				<Typography
-					sx={{
-						fontSize: isMobile ? 18 : 22,
-						fontWeight: FontWeightValues.BOLD,
+				<a
+					href="https://tmr-card.web.app/ben"
+					target="_blank"
+					rel="noreferrer"
+					style={{
+						display: "flex",
+						alignItems: "center",
+						textDecoration: "none",
+						color: "inherit",
 					}}
 				>
-					by. 경배 민
-				</Typography>
-				<img
-					src="/images/memoji.png"
-					alt="미모지"
-					style={{
-						transition: "all 0.2s ease-in-out",
-						width: startedScroll ? "30px" : 0,
-						marginTop: "2px",
-					}}
-				/>
+					<Typography
+						sx={{
+							fontSize: isMobile ? 18 : 22,
+							fontWeight: FontWeightValues.BOLD,
+						}}
+					>
+						by. 경배 민
+					</Typography>
+
+					<img
+						src="/images/memoji.png"
+						alt="미모지"
+						style={{
+							transition: "all 0.2s ease-in-out",
+							width: startedScroll ? "30px" : 0,
+							marginTop: "2px",
+						}}
+					/>
+				</a>
 			</Grid>
 		</Grid>
 	);
