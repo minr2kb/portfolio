@@ -18,7 +18,7 @@ import RatioBox from "../components/RatioBox";
 const projects: ProjectBlockProps[] = [
 	{
 		title: "내일의창업",
-		description: `개인 자영업자 원스톱 창업 플랫폼, "내일의 창업" 개발의 프론트엔드를 담당하였습니다. 모의창업, 스토리, 뉴스피드 등의 페이지 개발을 주도하였고, 인증 프로세스 및 주요 UI 라이브러리 제작을 맡았습니다. 전반적인 초기 프로젝트 환경 구축 및 셋팅에 참여하였으며 yarn3 모노레포 환경에서 작업하였습니다. NextJS의 SSR을 살리기 위해 AWS와 Vercel에 배포 테스트를 진행하기도 했으며, Github Action을 이용하여 CI/CD 파이프라인을 구축하였습니다. 프론트 아키텍쳐로 아토믹 디자인을 채택하여 활용했습니다.`,
+		description: `개인 자영업자 원스톱 창업 플랫폼, "내일의 창업" 개발의 프론트엔드를 담당하였습니다. 모의창업, 스토리, 뉴스피드 등의 페이지 개발을 주도하였고, 인증 프로세스 및 주요 UI 라이브러리 제작을 맡았습니다. 전반적인 초기 프로젝트 환경 구축 및 셋팅에 참여하였으며 yarn3 모노레포 환경에서 작업하였습니다. NextJS의 SSR을 살리기 위해 AWS와 Vercel에 배포 테스트를 진행하기도 했으며, Github Action을 이용하여 CI/CD 파이프라인을 구축하였습니다. 컴포넌트 아키텍쳐로 아토믹 디자인을 채택하여 활용했습니다.`,
 		image: "/images/tmr-founders.png",
 		link: "https://tmr-founders.com/story",
 		skills: [
