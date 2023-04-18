@@ -24,6 +24,7 @@ const projects: ProjectBlockProps[] = [
 		skills: [
 			"ReactJS",
 			"TypeScript",
+			"Vite",
 			"MUI",
 			"Recoil",
 			"NextJS",

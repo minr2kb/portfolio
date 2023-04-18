@@ -29,6 +29,7 @@ const TagSphere = () => {
 			"NPM",
 			"Webpack",
 			"Nginx",
+			"Vite",
 		];
 
 		const options: TagCloudOptions = {

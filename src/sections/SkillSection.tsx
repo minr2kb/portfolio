@@ -3,7 +3,6 @@ import { Divider, Grid, Rating, Typography } from "@mui/material";
 
 import TagSphere from "../components/TagSphere";
 import { SectionProps } from "../interface/interfaces";
-import { FontWeightValues } from "../interface/types";
 import { Lightbulb, LightbulbOutlined } from "@mui/icons-material";
 
 const devSkills = [
