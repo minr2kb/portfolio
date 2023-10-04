@@ -11,6 +11,10 @@ const devSkills = [
 		rating: 4.5,
 	},
 	{
+		name: "ReactNative",
+		rating: 4,
+	},
+	{
 		name: "NextJS",
 		rating: 4,
 	},
@@ -23,11 +27,15 @@ const devSkills = [
 		rating: 4,
 	},
 	{
-		name: "NodeJS",
+		name: "React-Query",
 		rating: 4,
 	},
 	{
-		name: "MUI",
+		name: "Material UI",
+		rating: 4.5,
+	},
+	{
+		name: "Tailwind CSS",
 		rating: 4.5,
 	},
 	{
@@ -39,15 +47,18 @@ const devSkills = [
 const toolSkills = [
 	{
 		name: "Jira",
-		rating: 3,
+		rating: 4,
 	},
+	{ name: "Bitbucket", rating: 3 },
+	{ name: "Github", rating: 4 },
+	{ name: "Confluence", rating: 3 },
 	{
 		name: "Notion",
 		rating: 4,
 	},
 	{
 		name: "Slack",
-		rating: 3.5,
+		rating: 4.5,
 	},
 	{
 		name: "Figma",
@@ -61,7 +72,11 @@ const etcSkills = [
 		rating: 4,
 	},
 	{
-		name: "UI 디자인",
+		name: "스케이트보드",
+		rating: 3,
+	},
+	{
+		name: "UI/UX",
 		rating: 2.5,
 	},
 	{

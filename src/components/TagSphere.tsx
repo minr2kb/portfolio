@@ -10,9 +10,9 @@ const TagSphere = () => {
 		const container = "#tagcloud";
 		document.getElementById("tagcloud")!.innerHTML = "";
 		const texts = [
-			"HTML",
-			"CSS",
-			"JavaScript",
+			// "HTML",
+			// "CSS",
+			// "JavaScript",
 			"ReactJS",
 			"TypeScript",
 			"MUI",
@@ -30,6 +30,11 @@ const TagSphere = () => {
 			"Webpack",
 			"Nginx",
 			"Vite",
+			"ReactQuery",
+			"Redux",
+			"BitBucket",
+			"Tailwind",
+			"EC2",
 		];
 
 		const options: TagCloudOptions = {

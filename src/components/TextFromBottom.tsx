@@ -1,6 +1,4 @@
-import { Typography } from "@mui/material";
 import React, { useEffect } from "react";
-
 import { animated, useSpring } from "@react-spring/web";
 
 export interface TextFromBottomProps {
