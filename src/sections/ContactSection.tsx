@@ -2,7 +2,14 @@ import { Divider, Grid, Typography } from "@mui/material";
 import React from "react";
 import { SectionProps } from "../interface/interfaces";
 
-import { Call, Email, GitHub, Instagram, LinkedIn } from "@mui/icons-material";
+import {
+	Call,
+	Email,
+	GitHub,
+	InsertDriveFile,
+	Instagram,
+	LinkedIn,
+} from "@mui/icons-material";
 
 const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 	return (
@@ -108,6 +115,27 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 						}}
 					>
 						kyungbae-min-5963a921b
+					</Typography>
+				</Grid>
+				<Grid
+					container
+					alignItems={"center"}
+					mt={2}
+					component={"a"}
+					target="_blanc"
+					href={
+						"https://minr2kb.notion.site/Kyungbae-Min-26025aac838a4162b6e9965d92add2f0"
+					}
+					sx={{ textDecoration: "none", color: "inherit" }}
+				>
+					<InsertDriveFile />
+					<Typography
+						variant={"body2"}
+						sx={{
+							ml: 2,
+						}}
+					>
+						minr2kb.notion.site
 					</Typography>
 				</Grid>
 			</Grid>
