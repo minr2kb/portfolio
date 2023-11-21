@@ -8,11 +8,12 @@ import {
 	Button,
 	Collapse,
 	Tooltip,
+	useMediaQuery,
 } from "@mui/material";
-import { SectionProps } from "../interface/interfaces";
 import { KeyboardArrowDown, KeyboardArrowUp, Link } from "@mui/icons-material";
 import RatioBox from "../components/RatioBox";
 import { FontWeightValues } from "../interface/types";
+import { mobileMaxWidthMediaQuery } from "../theme";
 
 const projects: ProjectBlockProps[] = [
 	{
@@ -79,15 +80,7 @@ const projects: ProjectBlockProps[] = [
 		],
 		image: "/images/taghere.png",
 		link: "https://tag-here.com",
-		skills: [
-			"ReactJS",
-			"TypeScript",
-			"MUI",
-			"Jotai",
-			"NX",
-			"Jira",
-			"SocketIO",
-		],
+		skills: ["ReactJS", "TypeScript", "MUI", "Jotai", "NX", "Jira", "SocketIO"],
 		cateTag: "TMR Founders",
 	},
 	{
@@ -288,11 +281,8 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 				>
 					<img
 						src={image}
-						alt="project"
-						loading="lazy"
-						onLoadedData={e => {
-							console.log();
-						}}
+						alt='project'
+						loading='lazy'
 						style={{
 							transition: "all 0.2s ease-in-out",
 							width: "100%",
@@ -305,7 +295,7 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 				</Grid>
 			</RatioBox>
 			<Grid mt={2}>
-				<Typography variant="h3">
+				<Typography variant='h3'>
 					{title}
 
 					{link && (
@@ -316,13 +306,9 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 									ml: 0.5,
 								}}
 							>
-								<IconButton
-									size={"small"}
-									href={link}
-									target="_blank"
-								>
+								<IconButton size={"small"} href={link} target='_blank'>
 									<Link
-										htmlColor="#999"
+										htmlColor='#999'
 										fontSize={isMobile ? "small" : "medium"}
 									/>
 								</IconButton>
@@ -334,11 +320,11 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 			<Grid container>
 				{cateTag && (
 					<Chip
-						variant="outlined"
+						variant='outlined'
 						label={cateTag}
 						clickable
-						size="small"
-						color="secondary"
+						size='small'
+						color='secondary'
 						sx={{ mr: 1, mt: 1 }}
 					/>
 				)}
@@ -346,18 +332,18 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 					return (
 						<Chip
 							key={`${title}-${skill}`}
-							variant="outlined"
+							variant='outlined'
 							label={skill}
 							clickable
-							size="small"
-							color="primary"
+							size='small'
+							color='primary'
 							sx={{ mr: 1, mt: 1 }}
 						/>
 					);
 				})}
 			</Grid>
 			<Typography
-				variant="body2"
+				variant='body2'
 				sx={{
 					my: 2,
 					fontWeight: FontWeightValues.SEMI_BOLD,
@@ -369,14 +355,14 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 			{details.map((detail, idx) => (
 				<Grid container key={`${title}-detail-${idx}`}>
 					<Typography
-						variant="body2"
+						variant='body2'
 						color={"text.secondary"}
 						sx={{ mx: 1, fontWeight: FontWeightValues.BLACK }}
 					>
 						·
 					</Typography>
 					<Typography
-						variant="body2"
+						variant='body2'
 						sx={{ flex: 1, my: 0.3 }}
 						color={"text.secondary"}
 					>
@@ -388,11 +374,12 @@ const ProjectBlock: React.FC<ProjectBlockProps> = ({
 	);
 };
 
-const ProjectSection: React.FC<SectionProps> = ({ isMobile }) => {
+const ProjectSection = () => {
+	const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
 	const [viewMore, setViewMore] = useState(false);
 	return (
 		<Grid>
-			<Typography variant="h2">Projects</Typography>
+			<Typography variant='h2'>Projects</Typography>
 			<Divider />
 			{/* TODO: 필터 / 검색기능 */}
 			{projects.slice(0, 3).map(project => (
@@ -431,7 +418,7 @@ const ProjectSection: React.FC<SectionProps> = ({ isMobile }) => {
 			</Collapse>
 			<Button
 				fullWidth
-				variant="outlined"
+				variant='outlined'
 				onClick={() => setViewMore(!viewMore)}
 			>
 				{viewMore ? "접기" : `${projects.length - 3}개 더보기`}{" "}

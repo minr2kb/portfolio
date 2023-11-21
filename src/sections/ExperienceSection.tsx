@@ -1,6 +1,5 @@
 import { Divider, Grid, Typography } from "@mui/material";
 import React from "react";
-import { SectionProps } from "../interface/interfaces";
 import ExperienceItem, {
 	ExperienceItemType,
 } from "../components/ExperienceItem";
@@ -40,17 +39,13 @@ const experiences: ExperienceItemType[] = [
 	},
 ];
 
-const ExperienceSection: React.FC<SectionProps> = ({ open = true }) => {
+const ExperienceSection = ({ open = true }: { open?: boolean }) => {
 	return (
 		<Grid>
-			<Typography variant="h2">Experiences</Typography>
+			<Typography variant='h2'>Experiences</Typography>
 			<Divider sx={{ mb: 2 }} />
 			{experiences.map((experience, idx) => (
-				<ExperienceItem
-					key={`experience-${idx}`}
-					open={open}
-					{...experience}
-				/>
+				<ExperienceItem key={`experience-${idx}`} open={open} {...experience} />
 			))}
 		</Grid>
 	);

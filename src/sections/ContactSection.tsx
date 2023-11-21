@@ -1,20 +1,16 @@
 import { Divider, Grid, Typography } from "@mui/material";
-import React from "react";
-import { SectionProps } from "../interface/interfaces";
+import { Call, Email, GitHub, Instagram, LinkedIn } from "@mui/icons-material";
 
-import {
-	Call,
-	Email,
-	GitHub,
-	InsertDriveFile,
-	Instagram,
-	LinkedIn,
-} from "@mui/icons-material";
+const ContactSection = () => {
+	const mobile = "010-4554-1664";
+	const email = "kbmin1129@gmail.com";
+	const githubId = "minr2kb";
+	const instagramId = "minr2_kb";
+	const linkedIn = "kyungbae-min-5963a921b";
 
-const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 	return (
 		<Grid>
-			<Typography variant="h2">Contacts</Typography>
+			<Typography variant='h2'>Contacts</Typography>
 			<Divider />
 			<Grid
 				sx={{
@@ -27,8 +23,8 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 					alignItems={"center"}
 					mt={2}
 					component={"a"}
-					target="_blank"
-					href={"tel:01045541664"}
+					target='_blank'
+					href={`tel:${mobile.replaceAll("-", "")}`}
 					sx={{ textDecoration: "none", color: "inherit" }}
 				>
 					<Call />
@@ -38,7 +34,7 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 							ml: 2,
 						}}
 					>
-						010-4554-1664
+						{mobile}
 					</Typography>
 				</Grid>
 				<Grid
@@ -46,8 +42,8 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 					alignItems={"center"}
 					mt={2}
 					component={"a"}
-					target="_blanc"
-					href={"mailto:kbmin1129@gmail.com"}
+					target='_blanc'
+					href={`mailto:${email}`}
 					sx={{ textDecoration: "none", color: "inherit" }}
 				>
 					<Email />
@@ -57,7 +53,7 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 							ml: 2,
 						}}
 					>
-						kbmin1129@gmail.com
+						{email}
 					</Typography>
 				</Grid>
 				<Grid
@@ -65,8 +61,8 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 					alignItems={"center"}
 					mt={2}
 					component={"a"}
-					target="_blanc"
-					href={"https://github.com/minr2kb"}
+					target='_blanc'
+					href={`https://github.com/${githubId}`}
 					sx={{ textDecoration: "none", color: "inherit" }}
 				>
 					<GitHub />
@@ -76,7 +72,7 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 							ml: 2,
 						}}
 					>
-						minr2kb
+						{githubId}
 					</Typography>
 				</Grid>
 				<Grid
@@ -84,8 +80,8 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 					alignItems={"center"}
 					mt={2}
 					component={"a"}
-					target="_blanc"
-					href={"https://www.instagram.com/minr2_kb"}
+					target='_blanc'
+					href={`https://www.instagram.com/${instagramId}`}
 					sx={{ textDecoration: "none", color: "inherit" }}
 				>
 					<Instagram />
@@ -95,7 +91,7 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 							ml: 2,
 						}}
 					>
-						@minr2_kb
+						@{instagramId}
 					</Typography>
 				</Grid>
 				<Grid
@@ -103,8 +99,8 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 					alignItems={"center"}
 					mt={2}
 					component={"a"}
-					target="_blanc"
-					href={"https://www.linkedin.com/in/kyungbae-min-5963a921b"}
+					target='_blanc'
+					href={`https://www.linkedin.com/in/${linkedIn}`}
 					sx={{ textDecoration: "none", color: "inherit" }}
 				>
 					<LinkedIn />
@@ -114,28 +110,7 @@ const ContactSection: React.FC<SectionProps> = ({ isMobile }) => {
 							ml: 2,
 						}}
 					>
-						kyungbae-min-5963a921b
-					</Typography>
-				</Grid>
-				<Grid
-					container
-					alignItems={"center"}
-					mt={2}
-					component={"a"}
-					target="_blanc"
-					href={
-						"https://minr2kb.notion.site/Kyungbae-Min-26025aac838a4162b6e9965d92add2f0"
-					}
-					sx={{ textDecoration: "none", color: "inherit" }}
-				>
-					<InsertDriveFile />
-					<Typography
-						variant={"body2"}
-						sx={{
-							ml: 2,
-						}}
-					>
-						minr2kb.notion.site
+						{linkedIn}
 					</Typography>
 				</Grid>
 			</Grid>

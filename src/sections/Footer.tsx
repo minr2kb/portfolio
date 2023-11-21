@@ -1,9 +1,9 @@
-import React from "react";
-import { Divider, Grid, Typography } from "@mui/material";
+import { Divider, Grid, Typography, useMediaQuery } from "@mui/material";
 import { FontWeightValues } from "../interface/types";
-import { SectionProps } from "../interface/interfaces";
+import { mobileMaxWidthMediaQuery } from "../theme";
 
-const Footer: React.FC<SectionProps> = ({ isMobile }) => {
+const Footer = () => {
+	const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
 	return (
 		<Grid>
 			<Divider flexItem />
