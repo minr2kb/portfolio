@@ -1,4 +1,4 @@
-import { Grid, type SxProps } from '@mui/material';
+import { Box, type SxProps } from '@mui/material';
 import { useEffect, useState } from 'react';
 
 import TextTransition, { presets } from 'react-text-transition';
@@ -26,13 +26,13 @@ function RotatingText({ texts, textSx }: { texts: string[]; textSx?: SxProps }) 
       }}
       inline
     >
-      <Grid
+      <Box
         sx={{
           ...textSx,
         }}
       >
         {texts[index % texts.length]}
-      </Grid>
+      </Box>
     </TextTransition>
   );
 }

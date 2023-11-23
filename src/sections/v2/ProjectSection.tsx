@@ -2,6 +2,7 @@ import RatioBox from '@components/RatioBox';
 import { FontWeightValues } from '@interface/enums';
 import { Link } from '@mui/icons-material';
 import {
+  Box,
   Chip,
   Collapse,
   Divider,
@@ -258,21 +259,13 @@ function ProjectBlock({
 }: ProjectBlockProps) {
   const [expanded, setExpanded] = useState(false);
   return (
-    <Grid
-      item
-      md={expanded ? 12 : 6}
-      sx={{ position: 'relative', transition: 'all 0.2s ease-in-out' }}
-    >
-      <RatioBox
-        ratio={12 / 5}
-        sx={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-        }}
-      >
-        <Grid
+    <Grid item md={12} sx={{ position: 'relative', transition: 'all 0.2s ease-in-out' }}>
+      <RatioBox ratio={12 / 5}>
+        <Box
           sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
             width: '100%',
             height: '100%',
             borderRadius: '10px',
@@ -300,78 +293,80 @@ function ProjectBlock({
               objectPosition: 'center center',
             }}
           />
-        </Grid>
+        </Box>
       </RatioBox>
       <Collapse in={expanded}>
-        <Grid mt={2}>
-          <Typography variant="h3">
-            {title}
+        <Box sx={{ py: 2 }}>
+          <Box>
+            <Typography variant="h3">
+              {title}
 
-            {link !== '' && (
-              <Tooltip arrow title={link}>
-                <Grid
-                  sx={{
-                    display: 'inline-flex',
-                    ml: 0.5,
-                  }}
-                >
-                  <IconButton size="small" href={link} target="_blank">
-                    <Link htmlColor="#999" fontSize={isMobile ? 'small' : 'medium'} />
-                  </IconButton>
-                </Grid>
-              </Tooltip>
-            )}
-          </Typography>
-        </Grid>
-        <Grid container>
-          {cateTag !== '' && (
-            <Chip
-              variant="outlined"
-              label={cateTag}
-              clickable
-              size="small"
-              color="secondary"
-              sx={{ mr: 1, mt: 1 }}
-            />
-          )}
-          {skills.map(skill => {
-            return (
+              {link !== '' && (
+                <Tooltip arrow title={link}>
+                  <Grid
+                    sx={{
+                      display: 'inline-flex',
+                      ml: 0.5,
+                    }}
+                  >
+                    <IconButton size="small" href={link} target="_blank">
+                      <Link htmlColor="#999" fontSize={isMobile ? 'small' : 'medium'} />
+                    </IconButton>
+                  </Grid>
+                </Tooltip>
+              )}
+            </Typography>
+          </Box>
+          <Box display="flex">
+            {cateTag !== '' && (
               <Chip
-                key={`${title}-${skill}`}
                 variant="outlined"
-                label={skill}
+                label={cateTag}
                 clickable
                 size="small"
-                color="primary"
+                color="secondary"
                 sx={{ mr: 1, mt: 1 }}
               />
-            );
-          })}
-        </Grid>
-        <Typography
-          variant="body2"
-          sx={{
-            my: 2,
-            fontWeight: FontWeightValues.SEMI_BOLD,
-          }}
-          color="text.secondary"
-        >
-          {description}
-        </Typography>
-        {details.map((detail, idx) => (
-          <Grid container key={`${title}-detail-${idx}`}>
-            <Typography
-              variant="body2"
-              color="text.secondary"
-              sx={{ mx: 1, fontWeight: FontWeightValues.BLACK }}
-            >
-              ·
-            </Typography>
-            <Typography variant="body2" sx={{ flex: 1, my: 0.3 }} color="text.secondary">
-              {detail}
-            </Typography>
-          </Grid>
-        ))}
+            )}
+            {skills.map(skill => {
+              return (
+                <Chip
+                  key={`${title}-${skill}`}
+                  variant="outlined"
+                  label={skill}
+                  clickable
+                  size="small"
+                  color="primary"
+                  sx={{ mr: 1, mt: 1 }}
+                />
+              );
+            })}
+          </Box>
+          <Typography
+            variant="body2"
+            sx={{
+              my: 2,
+              fontWeight: FontWeightValues.SEMI_BOLD,
+            }}
+            color="text.secondary"
+          >
+            {description}
+          </Typography>
+          {details.map((detail, idx) => (
+            <Box display="flex" key={`${title}-detail-${idx}`}>
+              <Typography
+                variant="body2"
+                color="text.secondary"
+                sx={{ mx: 1, fontWeight: FontWeightValues.BLACK }}
+              >
+                ·
+              </Typography>
+              <Typography variant="body2" sx={{ flex: 1, my: 0.3 }} color="text.secondary">
+                {detail}
+              </Typography>
+            </Box>
+          ))}
+        </Box>
       </Collapse>
     </Grid>
   );
@@ -381,7 +376,7 @@ function ProjectSection() {
   const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
 
   return (
-    <Grid>
+    <Box>
       <Typography variant="h2">Projects</Typography>
       <Divider />
       {/* TODO: 필터 / 검색기능 */}
@@ -400,7 +395,7 @@ function ProjectSection() {
           />
         ))}
       </Grid>
-    </Grid>
+    </Box>
   );
 }
 

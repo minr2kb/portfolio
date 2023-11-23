@@ -1,6 +1,6 @@
 import TextWithDot from '@components/TextWithDot';
 import Trail from '@components/Trail';
-import { Grid, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
 
 export interface ExperienceItemType {
   title: string;
@@ -16,14 +16,14 @@ function ExperienceItem(
 ) {
   const { open, title, subtitle, logoSrc, descs } = props;
   return (
-    <Grid
+    <Box
       sx={{
         mb: 5,
       }}
     >
-      <Grid
-        container
+      <Box
         sx={{
+          display: 'flex',
           alignItems: 'center',
         }}
       >
@@ -45,11 +45,11 @@ function ExperienceItem(
         >
           {title}
         </Typography>
-      </Grid>
+      </Box>
       <Typography color="text.secondary" variant="body1">
         {subtitle}
       </Typography>
-      <Grid mt={2}>
+      <Box mt={2}>
         <Trail open={open} spacing={16}>
           {descs.map((desc, idx) => (
             <TextWithDot key={`${title}-desc-${idx}`} variant="body1">
@@ -57,8 +57,8 @@ function ExperienceItem(
             </TextWithDot>
           ))}
         </Trail>
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 }
 

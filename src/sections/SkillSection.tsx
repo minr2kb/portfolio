@@ -1,6 +1,7 @@
 import { FontWeightValues } from '@interface/enums';
 import { type SkillItemType } from '@interface/types';
 import {
+  Box,
   Collapse,
   Divider,
   Grid,
@@ -208,7 +209,7 @@ function SkillItem({
         <img src={skill.image} alt={skill.name} width={isMobile ? 50 : 60} />
       </Zoom>
 
-      <Grid sx={{ position: 'absolute', left: '100%', pl: 2 }}>
+      <Box sx={{ position: 'absolute', left: '100%', pl: 2 }}>
         <Collapse in={isSelected && open} orientation="horizontal">
           <Typography sx={{ fontWeight: FontWeightValues.BOLD }}>{skill.name}</Typography>
           <Grid container width="100%" spacing={0.5} flexWrap="nowrap">
@@ -224,7 +225,7 @@ function SkillItem({
             ))}
           </Grid>
         </Collapse>
-      </Grid>
+      </Box>
     </Grid>
   );
 }
@@ -248,7 +249,7 @@ function SkillList({ skills }: { skills: SkillItemType[] }) {
   };
 
   return (
-    <Grid position="relative">
+    <Box position="relative">
       <Grid container spacing={2} sx={{ mt: 2, width: '100%', position: 'relative' }}>
         {skills.map(skill => {
           const isSelected = selectedSkill?.name === skill.name;
@@ -279,13 +280,13 @@ function SkillList({ skills }: { skills: SkillItemType[] }) {
           }}
         />
       </Collapse>
-    </Grid>
+    </Box>
   );
 }
 
 function SkillSection() {
   return (
-    <Grid>
+    <Box>
       <Typography variant="h2">Skills</Typography>
       <Divider />
       <Grid container>
@@ -293,7 +294,7 @@ function SkillSection() {
           <SkillList skills={devSkills} />
         </Grid>
       </Grid>
-    </Grid>
+    </Box>
   );
 }
 

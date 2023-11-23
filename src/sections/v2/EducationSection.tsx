@@ -1,6 +1,6 @@
 import ExperienceItem, { type ExperienceItemType } from '@components/ExperienceItem';
 import ParallaxItem, { type ParallaxItemProps } from '@components/ParallaxItem';
-import { Divider, Grid, Typography } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 
 const academic: ExperienceItemType = {
   title: 'Stony Brook University',
@@ -54,7 +54,7 @@ const parallaxIcons: ParallaxItemProps[] = [
 
 function EducationSection({ open = false }: { open?: boolean }) {
   return (
-    <Grid position="relative">
+    <Box position="relative">
       <Typography variant="h2">Education</Typography>
       <Divider sx={{ mb: 2 }} />
 
@@ -63,7 +63,7 @@ function EducationSection({ open = false }: { open?: boolean }) {
       {parallaxIcons.map((parallaxIcon, idx) => (
         <ParallaxItem key={`parallax-aca-${idx}`} {...parallaxIcon} />
       ))}
-    </Grid>
+    </Box>
   );
 }
 

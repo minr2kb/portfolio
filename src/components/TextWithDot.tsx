@@ -1,8 +1,8 @@
-import { Grid, Typography, type TypographyProps } from '@mui/material';
+import { Box, Typography, type TypographyProps } from '@mui/material';
 
 function TextWithDot({ ...typoProps }: TypographyProps) {
   return (
-    <Grid container>
+    <Box display="flex">
       <Typography {...typoProps}>•</Typography>
       <Typography
         {...typoProps}
@@ -10,7 +10,7 @@ function TextWithDot({ ...typoProps }: TypographyProps) {
       >
         {typoProps.children}
       </Typography>
-    </Grid>
+    </Box>
   );
 }
 

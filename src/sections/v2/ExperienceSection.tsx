@@ -1,6 +1,6 @@
 import ExperienceItem, { type ExperienceItemType } from '@components/ExperienceItem';
 import ParallaxItem, { type ParallaxItemProps } from '@components/ParallaxItem';
-import { Divider, Grid, Typography } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 
 const experiences: ExperienceItemType[] = [
   {
@@ -101,7 +101,7 @@ const parallaxIcons: ParallaxItemProps[] = [
 
 function ExperienceSection({ open = true }: { open?: boolean }) {
   return (
-    <Grid position="relative">
+    <Box position="relative">
       <Typography variant="h2">Experience</Typography>
       <Divider sx={{ mb: 2 }} />
       {experiences.map((experience, idx) => (
@@ -110,7 +110,7 @@ function ExperienceSection({ open = true }: { open?: boolean }) {
       {parallaxIcons.map((parallaxIcon, idx) => (
         <ParallaxItem key={`parallax-exp-${idx}`} {...parallaxIcon} />
       ))}
-    </Grid>
+    </Box>
   );
 }
 
