@@ -1,9 +1,9 @@
-import React from "react";
-import { Grid, Typography, useMediaQuery } from "@mui/material";
-
-import { mobileMaxWidthMediaQuery } from "../theme";
+import { FontWeightValues } from "@interface/enums";
+import { Box, useMediaQuery } from "@mui/material";
 import { SpringValue, animated } from "@react-spring/web";
-import { FontWeightValues } from "../interface/types";
+import React from "react";
+import { TypeAnimation } from "react-type-animation";
+import { mobileMaxWidthMediaQuery } from "~/theme";
 
 export interface TopNavProps {
 	startedScroll?: boolean;
@@ -19,47 +19,46 @@ const TopNav: React.FC<TopNavProps> = ({
 	const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
 
 	return (
-		<Grid
-			container
+		<Box
 			sx={{
+				display: "flex",
 				position: "fixed",
-				top: 0,
-				left: 0,
-				width: "100%",
+				top: startedScroll ? 10 : 0,
+				left: startedScroll ? 10 : 0,
+				width: startedScroll ? "calc(100vw - 20px)" : "100vw",
 				height: isMobile ? "50px" : "60px",
+				borderRadius: startedScroll ? "30px" : 0,
 				alignItems: "center",
-				bgcolor: "rgba(255,255,255,0.6)",
-				// mixBlendMode: "difference",
+				bgcolor: startedScroll ? "rgba(255,255,255,0.3)" : "none",
 				zIndex: 2,
 				transition: "all 0.2s ease-in-out",
-				boxShadow: startedScroll ? "0px 0px 10px 5px rgba(0,0,0,0.1)" : "none",
+				boxShadow: startedScroll ? "0px 0px 7px 2px rgba(0,0,0,0.1)" : "none",
 				backdropFilter: startedScroll ? "blur(10px)" : "none",
 			}}
 		>
-			<Grid
-				container
+			<Box
 				sx={{
+					display: "flex",
 					alignItems: "center",
-					// maxWidth: "960px",
+					width: "100%",
 					px: 3,
-					mx: "auto",
 				}}
 			>
-				<Typography
-					sx={{
+				<TypeAnimation
+					sequence={["Portfolio"]}
+					wrapper='span'
+					cursor={false}
+					style={{
 						fontSize: isMobile ? 18 : 22,
 						fontWeight: FontWeightValues.BOLD,
 					}}
-				>
-					포트폴리오
-				</Typography>
-				<Grid
-					container
+				/>
+				<Box
 					sx={{
 						mx: 2,
+						display: "flex",
 						flex: 1,
 						alignItems: "center",
-						// cursor: "pointer",
 						minHeight: "15px",
 						borderRadius: "5px",
 					}}
@@ -83,7 +82,7 @@ const TopNav: React.FC<TopNavProps> = ({
 							backgroundColor: "rgba(0,0,0,0.2)",
 						}}
 					/>
-				</Grid>
+				</Box>
 				<a
 					href='https://tmr-card.web.app/ben'
 					target='_blank'
@@ -95,14 +94,15 @@ const TopNav: React.FC<TopNavProps> = ({
 						color: "inherit",
 					}}
 				>
-					<Typography
-						sx={{
+					<TypeAnimation
+						sequence={[1000, "by. 경배 민"]}
+						wrapper='span'
+						cursor={false}
+						style={{
 							fontSize: isMobile ? 18 : 22,
 							fontWeight: FontWeightValues.BOLD,
 						}}
-					>
-						by. 경배 민
-					</Typography>
+					/>
 
 					<img
 						src='/images/memoji.png'
@@ -114,8 +114,8 @@ const TopNav: React.FC<TopNavProps> = ({
 						}}
 					/>
 				</a>
-			</Grid>
-		</Grid>
+			</Box>
+		</Box>
 	);
 };
 

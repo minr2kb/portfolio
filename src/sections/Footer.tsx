@@ -1,6 +1,6 @@
+import { FontWeightValues } from "@interface/enums";
 import { Divider, Grid, Typography, useMediaQuery } from "@mui/material";
-import { FontWeightValues } from "../interface/types";
-import { mobileMaxWidthMediaQuery } from "../theme";
+import { mobileMaxWidthMediaQuery } from "~/theme";
 
 const Footer = () => {
 	const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);

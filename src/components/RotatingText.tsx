@@ -1,5 +1,5 @@
-import { Box, Grid, SxProps, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { Grid, SxProps } from "@mui/material";
+import { useEffect, useState } from "react";
 
 import TextTransition, { presets } from "react-text-transition";
 

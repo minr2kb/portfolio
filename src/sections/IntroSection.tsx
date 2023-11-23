@@ -1,7 +1,6 @@
-import React from "react";
+import RotatingText from "@components/RotatingText";
 import { Grid, Typography, useMediaQuery } from "@mui/material";
-import RotatingText from "../components/RotatingText";
-import { mobileMaxWidthMediaQuery } from "../theme";
+import { mobileMaxWidthMediaQuery } from "~/theme";
 
 const IntroSection = () => {
 	const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);

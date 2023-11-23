@@ -1,5 +1,5 @@
-import { Divider, Grid, Typography } from "@mui/material";
 import { Call, Email, GitHub, Instagram, LinkedIn } from "@mui/icons-material";
+import { Divider, Grid, Typography } from "@mui/material";
 
 const ContactSection = () => {
 	const mobile = "010-4554-1664";

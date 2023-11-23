@@ -1,19 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
 import { Grid } from "@mui/material";
-
 import { useScroll } from "@react-spring/web";
-
-import useRangeSwitch from "../utils/useRangeSwitch";
-import TopNav from "../sections/TopNav";
-
-import SkillSection from "../sections/SkillSection";
-import AcademicSection from "../sections/AcademicSection";
-import ProjectSection from "../sections/ProjectSection";
-import Footer from "../sections/Footer";
-import ContactSection from "../sections/ContactSection";
-
-import ExperienceSection from "../sections/ExperienceSection";
-import IntroSection from "../sections/IntroSection";
+import ContactSection from "@sections/ContactSection";
+import EducationSection from "@sections/EducationSection";
+import ExperienceSection from "@sections/ExperienceSection";
+import Footer from "@sections/Footer";
+import IntroSection from "@sections/IntroSection";
+import ProjectSection from "@sections/ProjectSection";
+import SkillSection from "@sections/SkillSection";
+import TopNav from "@sections/TopNav";
+import { useEffect, useRef, useState } from "react";
+import useRangeSwitch from "~/utils/useRangeSwitch";
 
 const Home = () => {
 	const containerRef = useRef<HTMLDivElement>(null!);
@@ -39,6 +35,7 @@ const Home = () => {
 			.querySelector('meta[name="theme-color"]')
 			?.setAttribute("content", "#1ECCA2");
 	}, []);
+
 	return (
 		<Grid ref={containerRef} sx={{ height: "100vh", overflow: "auto" }}>
 			{/* Outer Container */}
@@ -65,9 +62,9 @@ const Home = () => {
 							<IntroSection />
 						</Grid>
 
-						{/* SECTION: Academics */}
-						<Grid pt={10} id={"academics"}>
-							<AcademicSection open={openAcaTexts} />
+						{/* SECTION: Education */}
+						<Grid pt={10} id={"education"}>
+							<EducationSection open={openAcaTexts} />
 						</Grid>
 
 						{/* SECTION: Experiences */}

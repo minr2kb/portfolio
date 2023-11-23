@@ -1,18 +1,22 @@
-import React from "react";
-import { CssBaseline, ThemeProvider, useMediaQuery } from "@mui/material";
-import getTheme, { mobileMaxWidthMediaQuery } from "./theme";
+import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
+import getTheme, { mobileMaxWidthMediaQuery } from '~/theme';
 
-import { ThemeMode } from "./interface/types";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Home from "./pages/Home";
+import { ThemeMode } from '@interface/enums';
+import Home from '@pages/Home';
+import Test from '@pages/Test';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 function App() {
 	const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
 
 	const router = createBrowserRouter([
 		{
-			path: "/",
+			path: '/',
 			element: <Home />,
+		},
+		{
+			path: '/test',
+			element: <Test />,
 		},
 	]);
 

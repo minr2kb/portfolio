@@ -1,0 +1,21 @@
+{
+	"tabWidth": 2,
+	"useTabs": true,
+	"arrowParens": "avoid",
+	"printWidth": 100,
+	"singleQuote": true,
+	"semi": true,
+	"trailingComma": "all",
+	"importOrder": [
+    "^react",
+    "<THIRD_PARTY_MODULES>",
+		"^@pages/(.*)$",
+		"^@sections/(.*)$",
+		"^@components/(.*)$",
+		"^@interface/(.*)$",
+		"^~/(.*)$",
+		"^[./]"
+	],
+	"importOrderSeparation": true,
+	"importOrderSortSpecifiers": true
+}

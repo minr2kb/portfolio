@@ -1,5 +1,5 @@
-import React, { useEffect } from "react";
 import { animated, useSpring } from "@react-spring/web";
+import React, { useEffect } from "react";
 
 export interface TextFromBottomProps {
 	open: boolean;

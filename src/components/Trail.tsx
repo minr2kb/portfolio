@@ -1,6 +1,5 @@
-import React from "react";
 import { a, useTrail } from "@react-spring/web";
-import { FontWeightValues } from "../interface/types";
+import React from "react";
 
 export interface TrailProps {
 	open: boolean;

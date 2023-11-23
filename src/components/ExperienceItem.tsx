@@ -1,6 +1,6 @@
+import TextWithDot from "@components/TextWithDot";
+import Trail from "@components/Trail";
 import { Grid, Typography } from "@mui/material";
-import Trail from "../components/Trail";
-import TextWithDot from "../components/TextWithDot";
 
 export type ExperienceItemType = {
 	title: string;
@@ -38,7 +38,7 @@ const ExperienceItem = (
 					}}
 				/>
 				<Typography
-					variant="h3"
+					variant='h3'
 					sx={{
 						flex: 1,
 					}}
@@ -46,16 +46,13 @@ const ExperienceItem = (
 					{title}
 				</Typography>
 			</Grid>
-			<Typography color={"text.secondary"} variant="body1">
+			<Typography color={"text.secondary"} variant='body1'>
 				{subtitle}
 			</Typography>
 			<Grid mt={2}>
 				<Trail open={open} spacing={16}>
 					{descs.map((desc, idx) => (
-						<TextWithDot
-							key={`${title}-desc-${idx}`}
-							variant="body1"
-						>
+						<TextWithDot key={`${title}-desc-${idx}`} variant='body1'>
 							{desc}
 						</TextWithDot>
 					))}

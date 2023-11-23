@@ -1,0 +1,7 @@
+dist
+*.md
+node_modules
+.history
+.vscode
+coverage
+
