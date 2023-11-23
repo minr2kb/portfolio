@@ -1,8 +1,7 @@
 import RatioBox from '@components/RatioBox';
 import { FontWeightValues } from '@interface/enums';
-import { KeyboardArrowDown, KeyboardArrowUp, Link } from '@mui/icons-material';
+import { Link } from '@mui/icons-material';
 import {
-  Button,
   Chip,
   Collapse,
   Divider,
@@ -257,18 +256,35 @@ function ProjectBlock({
   cateTag = '',
   isMobile = false,
 }: ProjectBlockProps) {
+  const [expanded, setExpanded] = useState(false);
   return (
-    <Grid py={5}>
-      <RatioBox ratio={2.4}>
+    <Grid
+      item
+      md={expanded ? 12 : 6}
+      sx={{ position: 'relative', transition: 'all 0.2s ease-in-out' }}
+    >
+      <RatioBox
+        ratio={12 / 5}
+        sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+        }}
+      >
         <Grid
           sx={{
-            overflow: 'hidden',
             width: '100%',
             height: '100%',
             borderRadius: '10px',
+            cursor: 'pointer',
+
             '&:hover img': {
-              transform: 'scale(1.05)',
+              transform: 'scale(1.005)',
+              boxShadow: '0 0 10px 4px rgba(0,0,0,0.1)',
             },
+          }}
+          onClick={() => {
+            setExpanded(prev => !prev);
           }}
         >
           <img
@@ -286,103 +302,91 @@ function ProjectBlock({
           />
         </Grid>
       </RatioBox>
-      <Grid mt={2}>
-        <Typography variant="h3">
-          {title}
+      <Collapse in={expanded}>
+        <Grid mt={2}>
+          <Typography variant="h3">
+            {title}
 
-          {link !== '' && (
-            <Tooltip arrow title={link}>
-              <Grid
-                sx={{
-                  display: 'inline-flex',
-                  ml: 0.5,
-                }}
-              >
-                <IconButton size="small" href={link} target="_blank">
-                  <Link htmlColor="#999" fontSize={isMobile ? 'small' : 'medium'} />
-                </IconButton>
-              </Grid>
-            </Tooltip>
-          )}
-        </Typography>
-      </Grid>
-      <Grid container>
-        {cateTag !== '' && (
-          <Chip
-            variant="outlined"
-            label={cateTag}
-            clickable
-            size="small"
-            color="secondary"
-            sx={{ mr: 1, mt: 1 }}
-          />
-        )}
-        {skills.map(skill => {
-          return (
-            <Chip
-              key={`${title}-${skill}`}
-              variant="outlined"
-              label={skill}
-              clickable
-              size="small"
-              color="primary"
-              sx={{ mr: 1, mt: 1 }}
-            />
-          );
-        })}
-      </Grid>
-      <Typography
-        variant="body2"
-        sx={{
-          my: 2,
-          fontWeight: FontWeightValues.SEMI_BOLD,
-        }}
-        color="text.secondary"
-      >
-        {description}
-      </Typography>
-      {details.map((detail, idx) => (
-        <Grid container key={`${title}-detail-${idx}`}>
-          <Typography
-            variant="body2"
-            color="text.secondary"
-            sx={{ mx: 1, fontWeight: FontWeightValues.BLACK }}
-          >
-            ·
-          </Typography>
-          <Typography variant="body2" sx={{ flex: 1, my: 0.3 }} color="text.secondary">
-            {detail}
+            {link !== '' && (
+              <Tooltip arrow title={link}>
+                <Grid
+                  sx={{
+                    display: 'inline-flex',
+                    ml: 0.5,
+                  }}
+                >
+                  <IconButton size="small" href={link} target="_blank">
+                    <Link htmlColor="#999" fontSize={isMobile ? 'small' : 'medium'} />
+                  </IconButton>
+                </Grid>
+              </Tooltip>
+            )}
           </Typography>
         </Grid>
-      ))}
+        <Grid container>
+          {cateTag !== '' && (
+            <Chip
+              variant="outlined"
+              label={cateTag}
+              clickable
+              size="small"
+              color="secondary"
+              sx={{ mr: 1, mt: 1 }}
+            />
+          )}
+          {skills.map(skill => {
+            return (
+              <Chip
+                key={`${title}-${skill}`}
+                variant="outlined"
+                label={skill}
+                clickable
+                size="small"
+                color="primary"
+                sx={{ mr: 1, mt: 1 }}
+              />
+            );
+          })}
+        </Grid>
+        <Typography
+          variant="body2"
+          sx={{
+            my: 2,
+            fontWeight: FontWeightValues.SEMI_BOLD,
+          }}
+          color="text.secondary"
+        >
+          {description}
+        </Typography>
+        {details.map((detail, idx) => (
+          <Grid container key={`${title}-detail-${idx}`}>
+            <Typography
+              variant="body2"
+              color="text.secondary"
+              sx={{ mx: 1, fontWeight: FontWeightValues.BLACK }}
+            >
+              ·
+            </Typography>
+            <Typography variant="body2" sx={{ flex: 1, my: 0.3 }} color="text.secondary">
+              {detail}
+            </Typography>
+          </Grid>
+        ))}
+      </Collapse>
     </Grid>
   );
 }
 
 function ProjectSection() {
   const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
-  const [viewMore, setViewMore] = useState(false);
+
   return (
     <Grid>
       <Typography variant="h2">Projects</Typography>
       <Divider />
       {/* TODO: 필터 / 검색기능 */}
-      {projects.slice(0, 3).map(project => (
-        <ProjectBlock
-          key={project.title}
-          title={project.title}
-          description={project.description}
-          details={project.details}
-          image={project.image}
-          skills={project.skills}
-          link={project.link}
-          cateTag={project.cateTag}
-          isMobile={isMobile}
-        />
-      ))}
-
-      <Collapse in={viewMore} unmountOnExit mountOnEnter timeout={{ enter: 1200, exit: 500 }}>
-        {projects.slice(3).map(project => (
+      <Grid container spacing={2} mt={2}>
+        {projects.map(project => (
           <ProjectBlock
             key={project.title}
             title={project.title}
@@ -395,17 +399,7 @@ function ProjectSection() {
             isMobile={isMobile}
           />
         ))}
-      </Collapse>
-      <Button
-        fullWidth
-        variant="outlined"
-        onClick={() => {
-          setViewMore(!viewMore);
-        }}
-      >
-        {viewMore ? '접기' : `${projects.length - 3}개 더보기`}{' '}
-        {viewMore ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
-      </Button>
+      </Grid>
     </Grid>
   );
 }

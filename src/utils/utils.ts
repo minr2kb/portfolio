@@ -5,6 +5,7 @@
  * @param max 0~1
  * @returns value scaled in range of min to max
  */
+// eslint-disable-next-line import/prefer-default-export
 export const scaleRange = (val: number, min: number, max: number) => {
-	return Math.min(Math.max(val - min, 0), max) * (1 / (max - min));
+  return Math.min(Math.max(val - min, 0), max) * (1 / (max - min));
 };

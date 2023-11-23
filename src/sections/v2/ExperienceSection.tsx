@@ -1,4 +1,5 @@
 import ExperienceItem, { type ExperienceItemType } from '@components/ExperienceItem';
+import ParallaxItem, { type ParallaxItemProps } from '@components/ParallaxItem';
 import { Divider, Grid, Typography } from '@mui/material';
 
 const experiences: ExperienceItemType[] = [
@@ -36,6 +37,68 @@ const experiences: ExperienceItemType[] = [
   },
 ];
 
+const parallaxIcons: ParallaxItemProps[] = [
+  {
+    speed: 20,
+    position: {
+      top: '70%',
+      left: '-25%',
+    },
+
+    rotate: [0, 40],
+    fontSize: 180,
+    blur: 1,
+    icon: '📱',
+  },
+  {
+    speed: 25,
+    position: {
+      top: '10%',
+      left: '-50%',
+    },
+
+    rotate: [0, 40],
+    fontSize: 120,
+    blur: 1,
+    icon: '⏱️',
+  },
+  {
+    speed: 10,
+    position: {
+      top: 0,
+      right: '10%',
+    },
+    rotate: [-40, 0],
+    fontSize: 110,
+    blur: 0,
+    icon: '💻',
+  },
+  {
+    speed: 5,
+    position: {
+      top: '50%',
+      left: '70%',
+    },
+    rotate: [0, 60],
+    fontSize: 70,
+    blur: 2,
+    opacity: 0.8,
+    icon: '🧑‍💻',
+  },
+  {
+    speed: 50,
+    position: {
+      top: '50%',
+      right: '-50%',
+    },
+    rotate: [-30, 0],
+    fontSize: 400,
+    blur: 7,
+
+    icon: '⌨️',
+  },
+];
+
 function ExperienceSection({ open = true }: { open?: boolean }) {
   return (
     <Grid position="relative">
@@ -43,6 +106,9 @@ function ExperienceSection({ open = true }: { open?: boolean }) {
       <Divider sx={{ mb: 2 }} />
       {experiences.map((experience, idx) => (
         <ExperienceItem key={`experience-${idx}`} open={open} {...experience} />
+      ))}
+      {parallaxIcons.map((parallaxIcon, idx) => (
+        <ParallaxItem key={`parallax-exp-${idx}`} {...parallaxIcon} />
       ))}
     </Grid>
   );

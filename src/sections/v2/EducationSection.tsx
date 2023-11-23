@@ -1,4 +1,5 @@
 import ExperienceItem, { type ExperienceItemType } from '@components/ExperienceItem';
+import ParallaxItem, { type ParallaxItemProps } from '@components/ParallaxItem';
 import { Divider, Grid, Typography } from '@mui/material';
 
 const academic: ExperienceItemType = {
@@ -13,6 +14,44 @@ const academic: ExperienceItemType = {
   ],
 };
 
+const parallaxIcons: ParallaxItemProps[] = [
+  {
+    speed: 30,
+    position: {
+      top: '40%',
+      left: '-30%',
+    },
+
+    rotate: [0, 40],
+    fontSize: 200,
+    blur: 5,
+    icon: '🎓',
+  },
+  {
+    speed: 20,
+    position: {
+      top: '20%',
+      right: '-10%',
+    },
+    rotate: [-60, -40],
+    fontSize: 110,
+    blur: 0,
+    icon: '📚',
+  },
+  {
+    speed: 10,
+    position: {
+      top: '-10%',
+      left: '80%',
+    },
+    rotate: [0, 60],
+    fontSize: 70,
+    blur: 2,
+    opacity: 0.9,
+    icon: '🛹',
+  },
+];
+
 function EducationSection({ open = false }: { open?: boolean }) {
   return (
     <Grid position="relative">
@@ -20,6 +59,10 @@ function EducationSection({ open = false }: { open?: boolean }) {
       <Divider sx={{ mb: 2 }} />
 
       <ExperienceItem open={open} {...academic} />
+
+      {parallaxIcons.map((parallaxIcon, idx) => (
+        <ParallaxItem key={`parallax-aca-${idx}`} {...parallaxIcon} />
+      ))}
     </Grid>
   );
 }
