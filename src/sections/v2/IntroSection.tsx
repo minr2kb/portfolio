@@ -1,5 +1,5 @@
-import GradientBackground from '@components/GradientBackground';
-import { Box, Collapse, useMediaQuery } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
+import GradientBackground from '~/components/GradientBackground';
 import HoverChangingText from '~/components/HoverChangingText';
 import { mobileMaxWidthMediaQuery } from '~/theme';
 
@@ -34,66 +34,61 @@ function IntroSection() {
           p: 3,
         }}
       >
-        {/* <Zoom in style={{ transitionDelay: '1500ms' }}>
-          <Box>
-            <img src="/images/memoji.png" alt="미모지" height={isMobile ? '150px' : '240px'} />
-          </Box>
-        </Zoom> */}
-        <Collapse orientation="horizontal" in sx={{ transitionDelay: '2000ms' }}>
-          <Box>
-            {/* <TypeAnimation
-              sequence={[2000, '안녕하세요,\n성장하는 프론트엔드 개발자 \n민경배입니다']}
-              wrapper="span"
-              cursor={false}
-              style={{
-                fontSize: isMobile ? 32 : 50,
-                fontWeight: FontWeightValues.BOLD,
+        <Box>
+          {/* <TypeAnimation
+            sequence={[0, '안녕하세요,\n성장하는 FE 개발자 \n민경배입니다']}
+            wrapper="div"
+            cursor={false}
+            style={{
+              fontSize: isMobile ? 40 : 60,
+              fontWeight: FontWeightValues.BOLD,
+              mixBlendMode: 'color-burn',
+              whiteSpace: 'pre-wrap',
+              transform: 'translate3d(0,0,0)',
+            }}
+          /> */}
 
-                whiteSpace: 'pre-wrap',
-              }}
-            /> */}
-
+          <HoverChangingText
+            fontSize={isMobile ? 40 : 60}
+            text="안녕하세요,"
+            alt="👋하세요,"
+            sx={{
+              mixBlendMode: 'color-burn',
+              transform: 'translate3d(0,0,0)',
+            }}
+          />
+          <Box display="flex">
             <HoverChangingText
-              fontSize={isMobile ? 40 : 50}
-              text="안녕하세요,"
-              alt="👋하세요,"
+              fontSize={isMobile ? 40 : 60}
+              text="성장하는 "
+              alt="🌱📈하는"
               sx={{
                 mixBlendMode: 'color-burn',
               }}
             />
-            <Box display="flex">
-              <HoverChangingText
-                fontSize={isMobile ? 40 : 50}
-                text="성장하는 "
-                alt="🌱📈하는"
-                sx={{
-                  mixBlendMode: 'color-burn',
-                }}
-              />
-              <HoverChangingText
-                fontSize={isMobile ? 40 : 50}
-                text="FE 개발자,"
-                alt="💻📱 🧑‍💻 ,"
-                sx={{
-                  mixBlendMode: 'color-burn',
-                }}
-              />
-            </Box>
             <HoverChangingText
-              fontSize={isMobile ? 40 : 50}
-              text="민경배입니다"
-              alt={
-                <Box display="flex">
-                  <img src="/images/memoji.png" alt="미모지" height={isMobile ? '60px' : '65px'} />
-                  입니다
-                </Box>
-              }
+              fontSize={isMobile ? 40 : 60}
+              text="FE 개발자,"
+              alt="💻📱 🧑‍💻 ,"
               sx={{
                 mixBlendMode: 'color-burn',
               }}
             />
           </Box>
-        </Collapse>
+          <HoverChangingText
+            fontSize={isMobile ? 40 : 60}
+            text="민경배입니다"
+            alt={
+              <Box display="flex">
+                <img src="/images/memoji.png" alt="미모지" height={isMobile ? '60px' : '65px'} />
+                입니다
+              </Box>
+            }
+            sx={{
+              mixBlendMode: 'color-burn',
+            }}
+          />
+        </Box>
       </Box>
     </Box>
   );

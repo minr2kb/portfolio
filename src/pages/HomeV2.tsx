@@ -54,7 +54,7 @@ function HomeV2() {
         {/* <GradientBackground filter /> */}
         <Box id="intro" sx={{ width: '100%' }}>
           <IntroSection />
-          <Box sx={{ mx: 'auto', maxWidth: '640px', p: 4 }}>
+          <Box sx={{ mx: 'auto', maxWidth: '640px', p: 3 }}>
             {/* SECTION: Education */}
             <Box pt={10} id="education">
               <EducationSection open parallax={!isMobile} />
