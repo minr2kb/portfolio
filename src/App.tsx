@@ -10,7 +10,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Navigate to="/v1" replace />,
+      element: <Navigate to="/v2" replace />,
     },
     {
       path: '/v1',

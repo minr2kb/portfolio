@@ -49,7 +49,7 @@ function IntroSection() {
           /> */}
 
           <HoverChangingText
-            fontSize={isMobile ? 40 : 60}
+            fontSize={isMobile ? 40 : 54}
             text="안녕하세요,"
             alt="👋하세요,"
             sx={{
@@ -59,7 +59,7 @@ function IntroSection() {
           />
           <Box display="flex">
             <HoverChangingText
-              fontSize={isMobile ? 40 : 60}
+              fontSize={isMobile ? 40 : 54}
               text="성장하는 "
               alt="🌱📈하는"
               sx={{
@@ -67,7 +67,7 @@ function IntroSection() {
               }}
             />
             <HoverChangingText
-              fontSize={isMobile ? 40 : 60}
+              fontSize={isMobile ? 40 : 54}
               text="FE 개발자,"
               alt="💻📱 🧑‍💻 ,"
               sx={{
@@ -76,7 +76,7 @@ function IntroSection() {
             />
           </Box>
           <HoverChangingText
-            fontSize={isMobile ? 40 : 60}
+            fontSize={isMobile ? 40 : 54}
             text="민경배입니다"
             alt={
               <Box display="flex">

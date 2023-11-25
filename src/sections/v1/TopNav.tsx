@@ -2,6 +2,7 @@ import { FontWeightValues } from '@interface/enums';
 import { Grid, Typography, useMediaQuery } from '@mui/material';
 
 import { animated, type SpringValue } from '@react-spring/web';
+import { Link } from 'react-router-dom';
 import { mobileMaxWidthMediaQuery } from '~/theme';
 
 export interface Props {
@@ -71,10 +72,10 @@ function TopNav({ startedScroll, scrollY, pageHeight }: Props) {
             }}
           />
         </Grid>
-        <a
-          href="https://tmr-card.web.app/ben"
-          target="_blank"
-          rel="noreferrer"
+
+        <Link
+          to="/v2"
+          replace
           style={{
             display: 'flex',
             alignItems: 'center',
@@ -100,7 +101,7 @@ function TopNav({ startedScroll, scrollY, pageHeight }: Props) {
               marginTop: '2px',
             }}
           />
-        </a>
+        </Link>
       </Grid>
     </Grid>
   );

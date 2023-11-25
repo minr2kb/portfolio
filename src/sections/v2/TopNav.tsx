@@ -13,6 +13,7 @@ import {
   useMediaQuery,
 } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { mobileMaxWidthMediaQuery } from '~/theme';
 
 export interface Props {
@@ -150,10 +151,9 @@ function TopNav({ startedScroll = false }: Props) {
               <MoreHoriz sx={{ opacity: startedScroll ? 1 : 0.7 }} />
             </IconButton>
 
-            <a
-              href="https://tmr-card.web.app/ben"
-              target="_blank"
-              rel="noreferrer"
+            <Link
+              to="/v1"
+              replace
               style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -169,7 +169,7 @@ function TopNav({ startedScroll = false }: Props) {
               >
                 by. 경배 민
               </Typography>
-            </a>
+            </Link>
           </Box>
 
           <Collapse in={isOpen}>
