@@ -28,7 +28,7 @@ interface NavBarProps {
   children?: React.ReactNode;
 }
 
-const sections = ['Intro', 'Education', 'Experience', 'Skills', 'Contacts'];
+const sections = ['Intro', 'Education', 'Experience', 'Skills', 'Projects', 'Contacts'];
 
 const NavBar = forwardRef<HTMLDivElement, NavBarProps>(function NavBar(
   { startedScroll = false, openNavigator, sx, children },
