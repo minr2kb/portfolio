@@ -1,8 +1,8 @@
-import ExperienceItem, { type ExperienceItemType } from '@components/ExperienceItem';
 import ParallaxItem, { type ParallaxItemProps } from '@components/ParallaxItem';
 import { Box, Divider, Typography } from '@mui/material';
+import EduExpItem, { type EduExpItemType } from '~/components/ExperienceItem';
 
-const academic: ExperienceItemType = {
+const academic: EduExpItemType = {
   title: 'Stony Brook University',
   subtitle: '2019 Spring - 2022 Fall',
   logoSrc: '/images/SBU-logo-simp.png',
@@ -19,11 +19,11 @@ const parallaxIcons: ParallaxItemProps[] = [
     speed: 30,
     position: {
       top: '40%',
-      left: '-30%',
+      left: '-40%',
     },
 
     rotate: [0, 40],
-    fontSize: 200,
+    fontSize: 170,
     blur: 5,
     icon: '🎓',
   },
@@ -31,7 +31,7 @@ const parallaxIcons: ParallaxItemProps[] = [
     speed: 20,
     position: {
       top: '20%',
-      right: '-10%',
+      right: '-40%',
     },
     rotate: [-60, -40],
     fontSize: 110,
@@ -52,17 +52,24 @@ const parallaxIcons: ParallaxItemProps[] = [
   },
 ];
 
-function EducationSection({ open = false }: { open?: boolean }) {
+function EducationSection({
+  open = false,
+  parallax = false,
+}: {
+  open?: boolean;
+  parallax?: boolean;
+}) {
   return (
     <Box position="relative">
       <Typography variant="h2">Education</Typography>
       <Divider sx={{ mb: 2 }} />
 
-      <ExperienceItem open={open} {...academic} />
+      <EduExpItem open={open} {...academic} />
 
-      {parallaxIcons.map((parallaxIcon, idx) => (
-        <ParallaxItem key={`parallax-aca-${idx}`} {...parallaxIcon} />
-      ))}
+      {parallax &&
+        parallaxIcons.map((parallaxIcon, idx) => (
+          <ParallaxItem key={`parallax-edu-${idx}`} {...parallaxIcon} />
+        ))}
     </Box>
   );
 }

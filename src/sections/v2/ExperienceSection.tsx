@@ -1,8 +1,8 @@
-import ExperienceItem, { type ExperienceItemType } from '@components/ExperienceItem';
 import ParallaxItem, { type ParallaxItemProps } from '@components/ParallaxItem';
 import { Box, Divider, Typography } from '@mui/material';
+import EduExpItem, { type EduExpItemType } from '~/components/ExperienceItem';
 
-const experiences: ExperienceItemType[] = [
+const experiences: EduExpItemType[] = [
   {
     title: '퍼블리',
     subtitle: 'PUBLY, 2023.07 - 현재',
@@ -42,12 +42,12 @@ const parallaxIcons: ParallaxItemProps[] = [
     speed: 20,
     position: {
       top: '70%',
-      left: '-25%',
+      left: '-30%',
     },
 
     rotate: [0, 40],
-    fontSize: 180,
-    blur: 1,
+    fontSize: 150,
+    blur: 0,
     icon: '📱',
   },
   {
@@ -58,15 +58,15 @@ const parallaxIcons: ParallaxItemProps[] = [
     },
 
     rotate: [0, 40],
-    fontSize: 120,
-    blur: 1,
+    fontSize: 200,
+    blur: 3,
     icon: '⏱️',
   },
   {
     speed: 10,
     position: {
       top: 0,
-      right: '10%',
+      right: '-10%',
     },
     rotate: [-40, 0],
     fontSize: 110,
@@ -99,17 +99,24 @@ const parallaxIcons: ParallaxItemProps[] = [
   },
 ];
 
-function ExperienceSection({ open = true }: { open?: boolean }) {
+function ExperienceSection({
+  open = true,
+  parallax = false,
+}: {
+  open?: boolean;
+  parallax?: boolean;
+}) {
   return (
     <Box position="relative">
       <Typography variant="h2">Experience</Typography>
       <Divider sx={{ mb: 2 }} />
       {experiences.map((experience, idx) => (
-        <ExperienceItem key={`experience-${idx}`} open={open} {...experience} />
+        <EduExpItem key={`experience-${idx}`} open={open} {...experience} />
       ))}
-      {parallaxIcons.map((parallaxIcon, idx) => (
-        <ParallaxItem key={`parallax-exp-${idx}`} {...parallaxIcon} />
-      ))}
+      {parallax &&
+        parallaxIcons.map((parallaxIcon, idx) => (
+          <ParallaxItem key={`parallax-exp-${idx}`} {...parallaxIcon} />
+        ))}
     </Box>
   );
 }

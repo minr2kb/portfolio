@@ -1,25 +1,25 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Box } from '@mui/material';
+import { Box, useMediaQuery } from '@mui/material';
 import { useScroll } from '@react-spring/web';
-import ContactSection from '@sections/ContactSection';
-import EducationSection from '@sections/EducationSection';
-import ExperienceSection from '@sections/ExperienceSection';
 import Footer from '@sections/Footer';
-import SkillSection from '@sections/SkillSection';
-import TopNav from '@sections/TopNav';
+import EducationSection from '@sections/v2/EducationSection';
+import ExperienceSection from '@sections/v2/ExperienceSection';
+import IntroSection from '@sections/v2/IntroSection';
+import ProjectSection from '@sections/v2/ProjectSection';
+import SkillSection from '@sections/v2/SkillSection';
+import TopNav from '@sections/v2/TopNav';
 import { useEffect, useRef, useState } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import IntroSection from '~/sections/v2/IntroSection';
-import ProjectSection from '~/sections/v2/ProjectSection';
+import ContactSection from '~/sections/v1/ContactSection';
+import { mobileMaxWidthMediaQuery } from '~/theme';
 
 function HomeV2() {
+  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
   const [scrollEl, setScrollElement] = useState<HTMLDivElement | null>(null);
-
   const [startedScroll, setStartedScroll] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null!);
-  const innerRef = useRef<HTMLDivElement>(null!);
 
-  const { scrollY } = useScroll({
+  useScroll({
     container: containerRef,
     onChange: ({ value: { scrollY } }) => {
       setStartedScroll(scrollY > 0);
@@ -50,38 +50,19 @@ function HomeV2() {
       >
         {/* Outer Container */}
 
-        <TopNav
-          startedScroll={startedScroll}
-          scrollY={scrollY}
-          pageHeight={
-            // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-            innerRef.current && containerRef.current
-              ? innerRef.current.clientHeight - containerRef.current.clientHeight
-              : 1
-          }
-        />
+        <TopNav startedScroll={startedScroll} />
         {/* <GradientBackground filter /> */}
-        <Box ref={innerRef} sx={{ width: '100%' }}>
+        <Box id="intro" sx={{ width: '100%' }}>
           <IntroSection />
-          <Box sx={{ mx: 'auto', maxWidth: '740px', p: 4 }}>
-            {/* <StepperSample /> */}
-
+          <Box sx={{ mx: 'auto', maxWidth: '640px', p: 4 }}>
             {/* SECTION: Education */}
-            <Box
-              pt={10}
-              id="education"
-              // sx={{
-              // 	p: 3,
-              // 	boxShadow: "0px 8px 20px 2px rgba(0,0,0,0.1)",
-              // 	borderRadius: "20px",
-              // }}
-            >
-              <EducationSection open />
+            <Box pt={10} id="education">
+              <EducationSection open parallax={!isMobile} />
             </Box>
 
             {/* SECTION: Experiences */}
-            <Box pt={10} id="experiences">
-              <ExperienceSection open />
+            <Box pt={10} id="experience">
+              <ExperienceSection open parallax={!isMobile} />
             </Box>
 
             {/* SECTION: Skills */}

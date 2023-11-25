@@ -1,13 +1,10 @@
 import { Call, Email, GitHub, Instagram, LinkedIn } from '@mui/icons-material';
 import { Divider, Grid, Typography } from '@mui/material';
+import { contacts } from '~/data/sectionData';
+
+const { mobile, email, githubId, instagramId, linkedIn } = contacts;
 
 function ContactSection() {
-  const mobile = '010-4554-1664';
-  const email = 'kbmin1129@gmail.com';
-  const githubId = 'minr2kb';
-  const instagramId = 'minr2_kb';
-  const linkedIn = 'kyungbae-min-5963a921b';
-
   return (
     <Grid>
       <Typography variant="h2">Contacts</Typography>

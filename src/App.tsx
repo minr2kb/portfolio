@@ -1,7 +1,7 @@
 import { ThemeMode } from '@interface/enums';
 import { CssBaseline, ThemeProvider, useMediaQuery } from '@mui/material';
 import Home from '@pages/Home';
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
 import HomeV2 from '~/pages/HomeV2';
 import getTheme, { mobileMaxWidthMediaQuery } from '~/theme';
 
@@ -10,6 +10,10 @@ function App() {
   const router = createBrowserRouter([
     {
       path: '/',
+      element: <Navigate to="/v1" replace />,
+    },
+    {
+      path: '/v1',
       element: <Home />,
     },
     {

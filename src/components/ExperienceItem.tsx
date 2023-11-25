@@ -2,15 +2,15 @@ import TextWithDot from '@components/TextWithDot';
 import Trail from '@components/Trail';
 import { Box, Typography } from '@mui/material';
 
-export interface ExperienceItemType {
+export interface EduExpItemType {
   title: string;
   subtitle: string;
   logoSrc: string;
   descs: string[];
 }
 
-function ExperienceItem(
-  props: ExperienceItemType & {
+function EduExpItem(
+  props: EduExpItemType & {
     open: boolean;
   },
 ) {
@@ -62,4 +62,4 @@ function ExperienceItem(
   );
 }
 
-export default ExperienceItem;
+export default EduExpItem;

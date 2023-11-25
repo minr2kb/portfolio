@@ -41,6 +41,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
+    '@typescript-eslint/no-unused-vars': 'warn',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/no-use-before-define': [
       'error',
@@ -91,6 +92,7 @@ module.exports = {
     'lines-between-class-members': 'off',
     'no-shadow': 'off',
     'no-use-before-define': 'off',
+    'no-unused-vars': 'warn',
     'no-unused-expressions': 'off',
     'no-restricted-syntax': 'off',
     'no-await-in-loop': 'off',
@@ -103,14 +105,6 @@ module.exports = {
         ignorePropertyModificationsFor: ['draft', 'e'],
       },
     ],
-    'import/no-extraneous-dependencies': [
-      'error',
-      {
-        devDependencies: [
-          'src/stories/**/*.stories.mdx',
-          'src/stories/**/*.stories.@(js|jsx|ts|tsx)',
-        ],
-      },
-    ],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
   },
 };

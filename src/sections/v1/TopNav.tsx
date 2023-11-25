@@ -1,7 +1,7 @@
 import { FontWeightValues } from '@interface/enums';
-import { Box, useMediaQuery } from '@mui/material';
+import { Grid, Typography, useMediaQuery } from '@mui/material';
+
 import { animated, type SpringValue } from '@react-spring/web';
-import { TypeAnimation } from 'react-type-animation';
 import { mobileMaxWidthMediaQuery } from '~/theme';
 
 export interface Props {
@@ -10,48 +10,46 @@ export interface Props {
   pageHeight: number;
 }
 
-function TopNav({ startedScroll = false, scrollY, pageHeight }: Props) {
+function TopNav({ startedScroll, scrollY, pageHeight }: Props) {
   const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
 
   return (
-    <Box
+    <Grid
+      container
       sx={{
-        display: 'flex',
         position: 'fixed',
-        top: startedScroll ? 10 : 0,
-        left: startedScroll ? 10 : 0,
-        width: startedScroll ? 'calc(100vw - 20px)' : '100vw',
+        top: 0,
+        left: 0,
+        width: '100%',
         height: isMobile ? '50px' : '60px',
-        borderRadius: startedScroll ? '30px' : 0,
         alignItems: 'center',
-        bgcolor: startedScroll ? 'rgba(255,255,255,0.3)' : 'none',
+        bgcolor: 'rgba(255,255,255,0.6)',
         zIndex: 2,
         transition: 'all 0.2s ease-in-out',
-        boxShadow: startedScroll ? '0px 0px 7px 2px rgba(0,0,0,0.1)' : 'none',
+        boxShadow: startedScroll ? '0px 0px 10px 5px rgba(0,0,0,0.1)' : 'none',
         backdropFilter: startedScroll ? 'blur(10px)' : 'none',
       }}
     >
-      <Box
+      <Grid
+        container
         sx={{
-          display: 'flex',
           alignItems: 'center',
-          width: '100%',
           px: 3,
+          mx: 'auto',
         }}
       >
-        <TypeAnimation
-          sequence={['Portfolio']}
-          wrapper="span"
-          cursor={false}
-          style={{
+        <Typography
+          sx={{
             fontSize: isMobile ? 18 : 22,
             fontWeight: FontWeightValues.BOLD,
           }}
-        />
-        <Box
+        >
+          포트폴리오
+        </Typography>
+        <Grid
+          container
           sx={{
             mx: 2,
-            display: 'flex',
             flex: 1,
             alignItems: 'center',
             minHeight: '15px',
@@ -72,7 +70,7 @@ function TopNav({ startedScroll = false, scrollY, pageHeight }: Props) {
               backgroundColor: 'rgba(0,0,0,0.2)',
             }}
           />
-        </Box>
+        </Grid>
         <a
           href="https://tmr-card.web.app/ben"
           target="_blank"
@@ -84,15 +82,14 @@ function TopNav({ startedScroll = false, scrollY, pageHeight }: Props) {
             color: 'inherit',
           }}
         >
-          <TypeAnimation
-            sequence={[1000, 'by. 경배 민']}
-            wrapper="span"
-            cursor={false}
-            style={{
+          <Typography
+            sx={{
               fontSize: isMobile ? 18 : 22,
               fontWeight: FontWeightValues.BOLD,
             }}
-          />
+          >
+            by. 경배 민
+          </Typography>
 
           <img
             src="/images/memoji.png"
@@ -104,8 +101,8 @@ function TopNav({ startedScroll = false, scrollY, pageHeight }: Props) {
             }}
           />
         </a>
-      </Box>
-    </Box>
+      </Grid>
+    </Grid>
   );
 }
 

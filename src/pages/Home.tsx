@@ -1,15 +1,15 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Grid } from '@mui/material';
 import { useScroll } from '@react-spring/web';
-import ContactSection from '@sections/ContactSection';
-import EducationSection from '@sections/EducationSection';
-import ExperienceSection from '@sections/ExperienceSection';
 import Footer from '@sections/Footer';
-import IntroSection from '@sections/IntroSection';
-import ProjectSection from '@sections/ProjectSection';
-import SkillSection from '@sections/SkillSection';
-import TopNav from '@sections/TopNav';
+import EducationSection from '@sections/v1/EducationSection';
+import ExperienceSection from '@sections/v1/ExperienceSection';
+import SkillSection from '@sections/v1/SkillSection';
+import TopNav from '@sections/v1/TopNav';
 import { useEffect, useRef, useState } from 'react';
+import ContactSection from '~/sections/v1/ContactSection';
+import IntroSection from '~/sections/v1/IntroSection';
+import ProjectSection from '~/sections/v1/ProjectSection';
 import useRangeSwitch from '~/utils/useRangeSwitch';
 
 function Home() {
@@ -38,7 +38,7 @@ function Home() {
   return (
     <Grid ref={containerRef} sx={{ height: '100vh', overflow: 'auto' }}>
       {/* Outer Container */}
-      <Grid ref={innerRef} sx={{ mx: 'auto', maxWidth: '740px', p: 3 }}>
+      <Grid ref={innerRef} sx={{ mx: 'auto', maxWidth: '960px', p: 3 }}>
         {/* Inner Container */}
         <Grid>
           <TopNav

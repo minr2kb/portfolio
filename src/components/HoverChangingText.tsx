@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, type SxProps } from '@mui/material';
 import React from 'react';
 
 export interface Props {
@@ -6,13 +6,15 @@ export interface Props {
   lineHeight?: number;
   text: string;
   alt?: string | React.ReactNode;
+  sx?: SxProps;
+  altSx?: SxProps;
 }
 
 function HoverChangingText(props: Props) {
-  const { fontSize, lineHeight = 1.3, text, alt } = props;
+  const { fontSize, lineHeight = 1.3, text, alt, sx = {}, altSx } = props;
 
   return (
-    <Box sx={{ height: fontSize * lineHeight, overflow: 'hidden' }}>
+    <Box sx={{ height: fontSize * lineHeight, width: 'fit-content', overflow: 'hidden' }}>
       <Box
         sx={{
           transition: 'all ease-in-out 150ms',
@@ -25,8 +27,8 @@ function HoverChangingText(props: Props) {
           variant="h1"
           sx={{
             fontSize,
-            mixBlendMode: 'color-burn',
             whiteSpace: 'pre-wrap',
+            ...sx,
           }}
         >
           {text}
@@ -35,8 +37,8 @@ function HoverChangingText(props: Props) {
           variant="h1"
           sx={{
             fontSize,
-            mixBlendMode: 'color-burn',
             whiteSpace: 'pre-wrap',
+            ...(altSx ?? sx),
           }}
         >
           {alt ?? text}
