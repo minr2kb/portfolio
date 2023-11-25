@@ -11,16 +11,96 @@ import {
   ListItemButton,
   Typography,
   useMediaQuery,
+  type SxProps,
 } from '@mui/material';
-import { useEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { mobileMaxWidthMediaQuery } from '~/theme';
 
-export interface Props {
+interface Props {
   startedScroll?: boolean;
 }
 
+interface NavBarProps {
+  startedScroll: boolean;
+  openNavigator?: () => void;
+  sx?: SxProps;
+  children?: React.ReactNode;
+}
+
 const sections = ['Intro', 'Education', 'Experience', 'Skills', 'Contacts'];
+
+const NavBar = forwardRef<HTMLDivElement, NavBarProps>(function NavBar(
+  { startedScroll = false, openNavigator, sx, children },
+  ref,
+) {
+  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+
+  return (
+    <Box
+      ref={ref}
+      sx={{
+        position: 'fixed',
+        top: startedScroll ? 10 : 0,
+        left: startedScroll ? 10 : 0,
+        width: startedScroll ? 'calc(100vw - 20px)' : '100vw',
+        borderRadius: startedScroll ? `${isMobile ? 25 : 30}px` : 0,
+        alignItems: 'flex-start',
+        bgcolor: startedScroll ? 'rgba(255,255,255,0.5)' : 'none',
+        zIndex: 10,
+        transition: 'all 0.2s ease-in-out',
+        boxShadow: startedScroll ? '0px 0px 7px 2px rgba(0,0,0,0.1)' : 'none',
+        backdropFilter: startedScroll ? 'blur(10px)' : 'none',
+        ...sx,
+      }}
+    >
+      <Box
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          width: '100%',
+          height: isMobile ? 50 : 60,
+          px: 3,
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: isMobile ? 18 : 22,
+            fontWeight: FontWeightValues.BOLD,
+          }}
+        >
+          Portfolio
+        </Typography>
+
+        <IconButton onClick={openNavigator} disabled={!startedScroll}>
+          <MoreHoriz sx={{ opacity: startedScroll ? 1 : 0.7 }} />
+        </IconButton>
+
+        <Link
+          to="/v1"
+          replace
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            textDecoration: 'none',
+            color: 'inherit',
+          }}
+        >
+          <Typography
+            sx={{
+              fontSize: isMobile ? 18 : 22,
+              fontWeight: FontWeightValues.BOLD,
+            }}
+          >
+            by. 경배 민
+          </Typography>
+        </Link>
+      </Box>
+      {children}
+    </Box>
+  );
+});
 
 function TopNav({ startedScroll = false }: Props) {
   const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
@@ -33,145 +113,30 @@ function TopNav({ startedScroll = false }: Props) {
     elem.scrollIntoView({ behavior: 'smooth' });
   };
 
+  const openNavigator = () => {
+    setIsOpen(prev => !prev);
+  };
+
   useEffect(() => {
     if (!startedScroll && isOpen) setIsOpen(false);
   }, [startedScroll]);
 
   return (
     <>
-      <Box
-        sx={{
-          position: 'fixed',
-          top: startedScroll ? 10 : 0,
-          left: startedScroll ? 10 : 0,
-          width: startedScroll ? 'calc(100vw - 20px)' : '100vw',
-          borderRadius: startedScroll ? `${isMobile ? 25 : 30}px` : 0,
-          alignItems: 'flex-start',
-          bgcolor: startedScroll ? 'rgba(255,255,255,0.3)' : 'none',
-          zIndex: 10,
-          opacity: startedScroll ? 0 : 1,
-          transition: 'all 0.2s ease-in-out',
-          boxShadow: startedScroll ? '0px 0px 7px 2px rgba(0,0,0,0.1)' : 'none',
-          backdropFilter: startedScroll ? 'blur(10px)' : 'none',
-          mixBlendMode: 'color-burn',
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            width: '100%',
-            height: isMobile ? 50 : 60,
-            px: 3,
-          }}
-        >
-          <Typography
-            sx={{
-              fontSize: isMobile ? 18 : 22,
-              fontWeight: FontWeightValues.BOLD,
-            }}
-          >
-            Portfolio
-          </Typography>
-
-          <IconButton disabled={!startedScroll}>
-            <MoreHoriz sx={{ opacity: startedScroll ? 1 : 0.7 }} />
-          </IconButton>
-
-          <a
-            href="https://tmr-card.web.app/ben"
-            target="_blank"
-            rel="noreferrer"
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              textDecoration: 'none',
-              color: 'inherit',
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: isMobile ? 18 : 22,
-                fontWeight: FontWeightValues.BOLD,
-              }}
-            >
-              by. 경배 민
-            </Typography>
-          </a>
-        </Box>
-      </Box>
+      <NavBar
+        startedScroll={startedScroll}
+        sx={{ opacity: startedScroll ? 0 : 1, mixBlendMode: 'color-burn' }}
+      />
       <ClickAwayListener
         onClickAway={() => {
-          setIsOpen(false);
+          if (isOpen) setIsOpen(false);
         }}
       >
-        <Box
-          sx={{
-            position: 'fixed',
-            top: startedScroll ? 10 : 0,
-            left: startedScroll ? 10 : 0,
-            width: startedScroll ? 'calc(100vw - 20px)' : '100vw',
-            borderRadius: startedScroll ? `${isMobile ? 25 : 30}px` : 0,
-            alignItems: 'flex-start',
-            bgcolor: startedScroll ? 'rgba(255,255,255,0.3)' : 'none',
-            zIndex: 10,
-            opacity: startedScroll ? 1 : 0,
-            transition: 'all 0.2s ease-in-out',
-            boxShadow: startedScroll ? '0px 0px 7px 2px rgba(0,0,0,0.1)' : 'none',
-            backdropFilter: startedScroll ? 'blur(10px)' : 'none',
-            mixBlendMode: 'normal',
-          }}
+        <NavBar
+          startedScroll={startedScroll}
+          openNavigator={openNavigator}
+          sx={{ opacity: startedScroll ? 1 : 0 }}
         >
-          <Box
-            sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              width: '100%',
-              height: isMobile ? 50 : 60,
-              px: 3,
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: isMobile ? 18 : 22,
-                fontWeight: FontWeightValues.BOLD,
-              }}
-            >
-              Portfolio
-            </Typography>
-
-            <IconButton
-              onClick={() => {
-                setIsOpen(prev => !prev);
-              }}
-              disabled={!startedScroll}
-            >
-              <MoreHoriz sx={{ opacity: startedScroll ? 1 : 0.7 }} />
-            </IconButton>
-
-            <Link
-              to="/v1"
-              replace
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                textDecoration: 'none',
-                color: 'inherit',
-              }}
-            >
-              <Typography
-                sx={{
-                  fontSize: isMobile ? 18 : 22,
-                  fontWeight: FontWeightValues.BOLD,
-                }}
-              >
-                by. 경배 민
-              </Typography>
-            </Link>
-          </Box>
-
           <Collapse in={isOpen}>
             <Box px={3}>
               <Divider />
@@ -200,7 +165,7 @@ function TopNav({ startedScroll = false }: Props) {
               </List>
             </Box>
           </Collapse>
-        </Box>
+        </NavBar>
       </ClickAwayListener>
     </>
   );
