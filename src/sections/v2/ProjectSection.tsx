@@ -87,6 +87,7 @@ function ProjectItem({
                   transform: 'scale(1.005)',
                   boxShadow: '0 0 10px 4px rgba(0,0,0,0.1)',
                 }}
+                onClick={handleDismiss}
               >
                 <img
                   src={image}

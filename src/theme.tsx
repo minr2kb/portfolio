@@ -35,7 +35,6 @@ const getTheme = (mode: ThemeMode, isMobile: boolean = false) => {
         disabled: '#CCC',
       },
     },
-
     typography: {
       fontFamily: [
         'AppleSDGothicNeo',
