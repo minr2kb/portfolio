@@ -122,7 +122,7 @@ function TopNav({ startedScroll = false }: Props) {
   }, [startedScroll]);
 
   return (
-    <>
+    <Box component="nav">
       <NavBar
         startedScroll={startedScroll}
         sx={{ opacity: startedScroll ? 0 : 1, mixBlendMode: 'color-burn' }}
@@ -167,7 +167,7 @@ function TopNav({ startedScroll = false }: Props) {
           </Collapse>
         </NavBar>
       </ClickAwayListener>
-    </>
+    </Box>
   );
 }
 

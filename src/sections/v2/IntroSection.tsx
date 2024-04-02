@@ -7,6 +7,7 @@ function IntroSection() {
   const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
   return (
     <Box
+      component="header"
       sx={{
         position: 'relative',
         display: 'flex',

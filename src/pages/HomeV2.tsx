@@ -38,56 +38,58 @@ function HomeV2() {
   }, []);
 
   return (
-    <ParallaxProvider scrollContainer={scrollEl ?? undefined}>
-      <Box
-        ref={containerRef}
-        sx={{
-          height: '100vh',
-          width: '100vw',
-          overflowY: 'auto',
-          overflowX: 'hidden',
-        }}
-      >
+    <>
+      <TopNav startedScroll={startedScroll} />
+      <ParallaxProvider scrollContainer={scrollEl ?? undefined}>
         {/* Outer Container */}
+        <Box
+          ref={containerRef}
+          sx={{
+            height: '100vh',
+            width: '100vw',
+            overflowY: 'auto',
+            overflowX: 'hidden',
+          }}
+        >
+          <Box id="intro" sx={{ width: '100%' }}>
+            <IntroSection />
 
-        <TopNav startedScroll={startedScroll} />
-        {/* <GradientBackground filter /> */}
-        <Box id="intro" sx={{ width: '100%' }}>
-          <IntroSection />
-          <Box sx={{ mx: 'auto', maxWidth: '640px', p: 3 }}>
-            {/* SECTION: Education */}
-            <Box pt={10} id="education">
-              <EducationSection open parallax={!isMobile} />
-            </Box>
+            <Box component="main" sx={{ mx: 'auto', maxWidth: '640px', p: 3 }}>
+              {/* SECTION: Education */}
+              <Box pt={10} id="education" component="section">
+                <EducationSection open parallax={!isMobile} />
+              </Box>
 
-            {/* SECTION: Experiences */}
-            <Box pt={10} id="experience">
-              <ExperienceSection open parallax={!isMobile} />
-            </Box>
+              {/* SECTION: Experiences */}
+              <Box pt={10} id="experience" component="section">
+                <ExperienceSection open parallax={!isMobile} />
+              </Box>
 
-            {/* SECTION: Skills */}
-            <Box pt={10} id="skills">
-              <SkillSection />
-            </Box>
+              {/* SECTION: Skills */}
+              <Box pt={10} id="skills" component="section">
+                <SkillSection />
+              </Box>
 
-            {/* SECTION: Projects */}
-            <Box pt={10} id="projects">
-              <ProjectSection />
-            </Box>
+              {/* SECTION: Projects */}
+              <Box pt={10} id="projects" component="section">
+                <ProjectSection />
+              </Box>
 
-            {/* SECTION: Contacts */}
-            <Box pt={10} id="contacts">
-              <ContactSection />
+              {/* SECTION: Contacts */}
+              <Box pt={10} id="contacts" component="section">
+                <ContactSection />
+              </Box>
             </Box>
 
             {/* SECTION: Footer */}
-            <Box pt={10} component="footer">
+
+            <Box component="footer" sx={{ mx: 'auto', maxWidth: '640px', p: 3, pt: 10 }}>
               <Footer />
             </Box>
           </Box>
         </Box>
-      </Box>
-    </ParallaxProvider>
+      </ParallaxProvider>
+    </>
   );
 }
 
