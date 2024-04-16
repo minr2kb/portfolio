@@ -12,11 +12,10 @@ import {
   Tooltip,
   Typography,
   Zoom,
-  useMediaQuery,
 } from '@mui/material';
 import { useRef, useState } from 'react';
 import { projects } from '~/data/sectionData';
-import { mobileMaxWidthMediaQuery } from '~/theme';
+import useDeviceQuery from '~/hooks/useDeviceQuery';
 
 function ProjectItem({
   title,
@@ -218,7 +217,7 @@ function ProjectItem({
 }
 
 function ProjectSection() {
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+  const { isMobile } = useDeviceQuery();
 
   return (
     <Box>

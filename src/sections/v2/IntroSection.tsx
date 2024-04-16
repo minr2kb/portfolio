@@ -1,10 +1,10 @@
-import { Box, useMediaQuery } from '@mui/material';
+import { Box } from '@mui/material';
 import GradientBackground from '~/components/GradientBackground';
 import HoverChangingText from '~/components/HoverChangingText';
-import { mobileMaxWidthMediaQuery } from '~/theme';
+import useDeviceQuery from '~/hooks/useDeviceQuery';
 
 function IntroSection() {
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+  const { isMobile } = useDeviceQuery();
   return (
     <Box
       component="header"
@@ -16,7 +16,7 @@ function IntroSection() {
         height: '100vh',
       }}
     >
-      <GradientBackground filter />
+      <GradientBackground />
       <Box
         sx={{
           position: 'absolute',

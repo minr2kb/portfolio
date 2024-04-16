@@ -6,15 +6,18 @@ import EducationSection from '@sections/v1/EducationSection';
 import ExperienceSection from '@sections/v1/ExperienceSection';
 import SkillSection from '@sections/v1/SkillSection';
 import TopNav from '@sections/v1/TopNav';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import useBrowserThemeColor from '~/hooks/useBrowserThemeColor';
+import useRangeSwitch from '~/hooks/useRangeSwitch';
 import ContactSection from '~/sections/v1/ContactSection';
 import IntroSection from '~/sections/v1/IntroSection';
 import ProjectSection from '~/sections/v1/ProjectSection';
-import useRangeSwitch from '~/utils/useRangeSwitch';
 
 function Home() {
   const containerRef = useRef<HTMLDivElement>(null!);
   const innerRef = useRef<HTMLDivElement>(null!);
+
+  useBrowserThemeColor('#1ECCA2');
 
   const [openAcaTexts, onAcaTextsRange] = useRangeSwitch();
   const [openExeTexts, onExeTextsRange] = useRangeSwitch();
@@ -31,9 +34,6 @@ function Home() {
       immediate: true,
     },
   });
-  useEffect(() => {
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#1ECCA2');
-  }, []);
 
   return (
     <Grid ref={containerRef} sx={{ height: '100vh', overflow: 'auto' }}>

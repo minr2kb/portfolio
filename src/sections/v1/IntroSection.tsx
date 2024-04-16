@@ -1,9 +1,9 @@
 import RotatingText from '@components/RotatingText';
-import { Grid, Typography, useMediaQuery } from '@mui/material';
-import { mobileMaxWidthMediaQuery } from '~/theme';
+import { Grid, Typography } from '@mui/material';
+import useDeviceQuery from '~/hooks/useDeviceQuery';
 
 function IntroSection() {
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+  const { isMobile } = useDeviceQuery();
 
   return (
     <Grid

@@ -1,10 +1,10 @@
-import { Box, useMediaQuery } from '@mui/material';
+import { Box } from '@mui/material';
 import TagCloud, { type TagCloudOptions } from 'TagCloud';
 import { useEffect, useRef } from 'react';
-import { mobileMaxWidthMediaQuery } from '../theme';
+import useDeviceQuery from '~/hooks/useDeviceQuery';
 
 function TagSphere() {
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+  const { isMobile } = useDeviceQuery();
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const tagCloudRef = useRef<HTMLDivElement>(null!);
   useEffect(() => {

@@ -1,9 +1,9 @@
 import { FontWeightValues } from '@interface/enums';
-import { Grid, Typography, useMediaQuery } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 
 import { animated, type SpringValue } from '@react-spring/web';
 import { Link } from 'react-router-dom';
-import { mobileMaxWidthMediaQuery } from '~/theme';
+import useDeviceQuery from '~/hooks/useDeviceQuery';
 
 export interface Props {
   startedScroll?: boolean;
@@ -12,7 +12,7 @@ export interface Props {
 }
 
 function TopNav({ startedScroll, scrollY, pageHeight }: Props) {
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+  const { isMobile } = useDeviceQuery();
 
   return (
     <Grid

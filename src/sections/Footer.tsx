@@ -1,9 +1,9 @@
 import { FontWeightValues } from '@interface/enums';
-import { Divider, Grid, Typography, useMediaQuery } from '@mui/material';
-import { mobileMaxWidthMediaQuery } from '~/theme';
+import { Divider, Grid, Typography } from '@mui/material';
+import useDeviceQuery from '~/hooks/useDeviceQuery';
 
 function Footer() {
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+  const { isMobile } = useDeviceQuery();
   return (
     <Grid>
       <Divider flexItem />

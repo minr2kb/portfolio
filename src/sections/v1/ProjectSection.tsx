@@ -10,12 +10,11 @@ import {
   IconButton,
   Tooltip,
   Typography,
-  useMediaQuery,
 } from '@mui/material';
 import { useState } from 'react';
 import { projects } from '~/data/sectionData';
+import useDeviceQuery from '~/hooks/useDeviceQuery';
 import { type ProjectItemType } from '~/interface/types';
-import { mobileMaxWidthMediaQuery } from '~/theme';
 
 function ProjectBlock({
   title,
@@ -130,7 +129,7 @@ function ProjectBlock({
 }
 
 function ProjectSection() {
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+  const { isMobile } = useDeviceQuery();
   const [viewMore, setViewMore] = useState(false);
   return (
     <Grid>

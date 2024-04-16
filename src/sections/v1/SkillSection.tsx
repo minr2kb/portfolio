@@ -78,7 +78,7 @@ function SkillList({
   return (
     <>
       {skills.map(skill => (
-        <Box display="flex" alignItems="center" mt={2} key={skill.name}>
+        <Box key={`skill-${skill.name}`} display="flex" alignItems="center" mt={2}>
           <Typography color="text.secondary" variant="body1">
             {skill.name}
           </Typography>

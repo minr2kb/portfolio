@@ -1,6 +1,7 @@
 import { FontWeightValues } from '@interface/enums';
 import { MoreHoriz } from '@mui/icons-material';
 import {
+  Badge,
   Box,
   ClickAwayListener,
   Collapse,
@@ -10,31 +11,27 @@ import {
   ListItem,
   ListItemButton,
   Typography,
-  useMediaQuery,
   type SxProps,
 } from '@mui/material';
 import React, { forwardRef, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { mobileMaxWidthMediaQuery } from '~/theme';
+import useDeviceQuery from '~/hooks/useDeviceQuery';
 
 interface Props {
   startedScroll?: boolean;
-}
-
-interface NavBarProps {
-  startedScroll: boolean;
-  openNavigator?: () => void;
-  sx?: SxProps;
-  children?: React.ReactNode;
+  version?: string;
 }
 
 const sections = ['Intro', 'Education', 'Experience', 'Skills', 'Projects', 'Contacts'];
 
-const NavBar = forwardRef<HTMLDivElement, NavBarProps>(function NavBar(
-  { startedScroll = false, openNavigator, sx, children },
-  ref,
-) {
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+const NavBar = forwardRef<
+  HTMLDivElement,
+  {
+    openNavigator?: () => void;
+    sx?: SxProps;
+    children?: React.ReactNode;
+  } & Props
+>(function NavBar({ startedScroll = false, version = '', openNavigator, sx, children }, ref) {
+  const { isMobile } = useDeviceQuery();
 
   return (
     <Box
@@ -64,28 +61,19 @@ const NavBar = forwardRef<HTMLDivElement, NavBarProps>(function NavBar(
           px: 3,
         }}
       >
-        <Typography
-          sx={{
-            fontSize: isMobile ? 18 : 22,
-            fontWeight: FontWeightValues.BOLD,
-          }}
-        >
-          Portfolio
-        </Typography>
-
-        <IconButton onClick={openNavigator} disabled={!startedScroll}>
-          <MoreHoriz sx={{ opacity: startedScroll ? 1 : 0.7 }} />
-        </IconButton>
-
-        <Link
-          to="/v1"
-          replace
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            textDecoration: 'none',
-            color: 'inherit',
-          }}
+        <Badge
+          badgeContent={
+            <Typography
+              sx={{
+                fontSize: isMobile ? 10 : 11,
+                fontWeight: FontWeightValues.BOLD,
+                mb: -2,
+                ml: 2,
+              }}
+            >
+              {version}
+            </Typography>
+          }
         >
           <Typography
             sx={{
@@ -93,17 +81,32 @@ const NavBar = forwardRef<HTMLDivElement, NavBarProps>(function NavBar(
               fontWeight: FontWeightValues.BOLD,
             }}
           >
-            by. 경배 민
+            Portfolio
           </Typography>
-        </Link>
+        </Badge>
+
+        <IconButton onClick={openNavigator} disabled={!startedScroll}>
+          <MoreHoriz sx={{ opacity: startedScroll ? 1 : 0.7 }} />
+        </IconButton>
+
+        <Typography
+          sx={{
+            fontSize: isMobile ? 18 : 22,
+            fontWeight: FontWeightValues.BOLD,
+          }}
+        >
+          by. 경배 민
+        </Typography>
       </Box>
       {children}
     </Box>
   );
 });
 
-function TopNav({ startedScroll = false }: Props) {
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+function TopNav(props: Props) {
+  const { startedScroll = false } = props;
+
+  const { isMobile } = useDeviceQuery();
   const [isOpen, setIsOpen] = useState(false);
 
   const onClickNavigator = (section: string) => {
@@ -123,20 +126,13 @@ function TopNav({ startedScroll = false }: Props) {
 
   return (
     <Box component="nav">
-      <NavBar
-        startedScroll={startedScroll}
-        sx={{ opacity: startedScroll ? 0 : 1, mixBlendMode: 'color-burn' }}
-      />
+      <NavBar {...props} sx={{ opacity: startedScroll ? 0 : 1, mixBlendMode: 'color-burn' }} />
       <ClickAwayListener
         onClickAway={() => {
           if (isOpen) setIsOpen(false);
         }}
       >
-        <NavBar
-          startedScroll={startedScroll}
-          openNavigator={openNavigator}
-          sx={{ opacity: startedScroll ? 1 : 0 }}
-        >
+        <NavBar {...props} openNavigator={openNavigator} sx={{ opacity: startedScroll ? 1 : 0 }}>
           <Collapse in={isOpen}>
             <Box px={3}>
               <Divider />

@@ -1,18 +1,10 @@
 import { FontWeightValues } from '@interface/enums';
 import { type SkillItemType } from '@interface/types';
-import {
-  Box,
-  Collapse,
-  Divider,
-  Grid,
-  LinearProgress,
-  Typography,
-  useMediaQuery,
-} from '@mui/material';
+import { Box, Collapse, Divider, Grid, LinearProgress, Typography } from '@mui/material';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import React, { useRef, useState } from 'react';
 import { skills } from '~/data/sectionData';
-import { mobileMaxWidthMediaQuery } from '~/theme';
+import useDeviceQuery from '~/hooks/useDeviceQuery';
 
 function SkillItem({
   skill,
@@ -26,7 +18,7 @@ function SkillItem({
   open: boolean;
 }) {
   const itemRef = useRef<HTMLDivElement>(null);
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+  const { isMobile } = useDeviceQuery();
 
   return (
     <Grid
@@ -74,7 +66,7 @@ function SkillItem({
           <Typography sx={{ fontWeight: FontWeightValues.BOLD }}>{skill.name}</Typography>
           <Grid container width="100%" spacing={0.5} flexWrap="nowrap">
             {[...Array(5)].map((_, i) => (
-              <Grid item width="40px">
+              <Grid key={`${skill.name}-star-${i}`} item width="40px">
                 <LinearProgress
                   variant="determinate"
                   value={skill.rating > i ? 100 : 0}
@@ -91,7 +83,7 @@ function SkillItem({
 }
 
 function SkillList({ skills }: { skills: SkillItemType[] }) {
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+  const { isMobile } = useDeviceQuery();
   const [selectedSkill, setSelectedSkill] = useState<SkillItemType>();
   const [open, setOpen] = useState(false);
 

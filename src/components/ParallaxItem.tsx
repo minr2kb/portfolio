@@ -1,7 +1,7 @@
-import { Box, useMediaQuery } from '@mui/material';
+import { Box } from '@mui/material';
 import { useState } from 'react';
 import { Parallax } from 'react-scroll-parallax';
-import { mobileMaxWidthMediaQuery } from '~/theme';
+import useDeviceQuery from '~/hooks/useDeviceQuery';
 
 export interface ParallaxItemProps {
   speed: number;
@@ -20,7 +20,7 @@ export interface ParallaxItemProps {
 
 function ParallaxItem(props: ParallaxItemProps) {
   const { speed, position, rotate, fontSize, blur, opacity = 1, icon } = props;
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+  const { isMobile } = useDeviceQuery();
   const [isOpacityEnabled, setIsOpacityEnabled] = useState(false);
 
   return (

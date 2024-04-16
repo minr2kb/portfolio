@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Box, useMediaQuery } from '@mui/material';
-import { useScroll } from '@react-spring/web';
+import { Box, useScrollTrigger } from '@mui/material';
 import Footer from '@sections/Footer';
 import EducationSection from '@sections/v2/EducationSection';
 import ExperienceSection from '@sections/v2/ExperienceSection';
@@ -10,36 +9,28 @@ import SkillSection from '@sections/v2/SkillSection';
 import TopNav from '@sections/v2/TopNav';
 import { useEffect, useRef, useState } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
+import useBrowserThemeColor from '~/hooks/useBrowserThemeColor';
+import useDeviceQuery from '~/hooks/useDeviceQuery';
 import ContactSection from '~/sections/v1/ContactSection';
-import { mobileMaxWidthMediaQuery } from '~/theme';
 
 function HomeV2() {
-  const isMobile = useMediaQuery(mobileMaxWidthMediaQuery);
+  const { isMobile } = useDeviceQuery();
   const [scrollEl, setScrollElement] = useState<HTMLDivElement | null>(null);
-  const [startedScroll, setStartedScroll] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null!);
 
-  useScroll({
-    container: containerRef,
-    onChange: ({ value: { scrollY } }) => {
-      setStartedScroll(scrollY > 0);
-    },
-    default: {
-      immediate: true,
-    },
+  useBrowserThemeColor('#1ECCA2');
+
+  const startedScroll = useScrollTrigger({
+    target: containerRef.current ?? undefined,
   });
 
   useEffect(() => {
     setScrollElement(containerRef.current);
   }, [containerRef.current]);
 
-  useEffect(() => {
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', '#1ECCA2');
-  }, []);
-
   return (
     <>
-      <TopNav startedScroll={startedScroll} />
+      <TopNav startedScroll={startedScroll} version="V2" />
       <ParallaxProvider scrollContainer={scrollEl ?? undefined}>
         {/* Outer Container */}
         <Box
