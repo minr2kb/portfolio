@@ -87,7 +87,7 @@ function ExpandedProjectItem({
         sx={{
           position: 'fixed',
           width: clientRect?.width,
-          top: openInfo ? '100px' : clientRect?.top,
+          top: openInfo ? '80px' : clientRect?.top,
           zIndex: 3,
           transition: 'all cubic-bezier(0, 0, 0.4, 1.0) 0.3s',
           ...(isMobile
@@ -190,6 +190,7 @@ function ExpandedProjectItem({
                 overflow: 'auto',
                 mt: 2,
                 gap: 1,
+                pb: 10,
               }}
             >
               {details.map((detail, idx) => {

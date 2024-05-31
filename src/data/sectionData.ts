@@ -24,8 +24,8 @@ export const aboutData = [
 ];
 
 export const educationData: EduExpItemType = {
-  title: '한국뉴욕주립대 - Stony Brook University',
-  subtitle: '2019 Spring - 2022 Fall',
+  title: 'Stony Brook University',
+  subtitle: '한국뉴욕주립대, 2019 Spring - 2022 Fall',
   logoSrc: '/images/SBU-logo-simp.png',
   descs: [
     'Bachelor of Science',

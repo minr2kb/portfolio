@@ -8,7 +8,7 @@ function AboutSection() {
       <Typography variant="h2">{Sections.ABOUT}.</Typography>
       <Divider orientation="horizontal" sx={{ mt: 1, mb: 3 }} />
       {aboutData.map(about => (
-        <Box key={about.title} sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 3 }}>
+        <Box key={about.title} sx={{ display: 'flex', flexDirection: 'column', gap: 1, mb: 5 }}>
           <Typography variant="h4">| {about.title}</Typography>
           <Typography variant="body1" fontWeight={FontWeightValues.BOLD} color={'text.secondary'}>
             {about.subtitle}
