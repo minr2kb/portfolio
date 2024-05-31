@@ -157,7 +157,7 @@ function HeroSection() {
   const renderTags = useMemo(
     () => (
       <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5, mt: 5 }}>
-        {['빠른실험', 'UI/UX', '스타트업', '디자인시스템', '토이프로젝트'].map(tag => (
+        {['빠른실험', 'UI/UX', '스타트업', '디자인시스템', '프론트엔드'].map(tag => (
           <Box
             key={tag}
             sx={{
@@ -312,7 +312,7 @@ function HeroSection() {
                     textAlign: 'end',
                   }}
                 >
-                  {'더 큰 일을 벌이고 싶은\nFE 개발자 민경배입니다'}
+                  {'더 나은 팀플레이어로 성장중인\nFE 엔지니어 민경배입니다'}
                 </Typography>
               </WidgetCard>
             </Grid>
