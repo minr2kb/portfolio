@@ -88,10 +88,14 @@ function ExpandedProjectItem({
           position: 'fixed',
           width: clientRect?.width,
           top: openInfo ? '100px' : clientRect?.top,
-          left: openInfo ? '50vw' : clientRect?.left,
           zIndex: 3,
           transition: 'all cubic-bezier(0, 0, 0.4, 1.0) 0.3s',
-          transform: openInfo ? 'translateX(-50%)' : 'none',
+          ...(isMobile
+            ? { left: clientRect?.left }
+            : {
+                left: openInfo ? '50vw' : clientRect?.left,
+                transform: openInfo ? 'translateX(-50%)' : 'none',
+              }),
         }}
       >
         <RatioBox ratio={12 / 5}>
@@ -223,16 +227,7 @@ function ExpandedProjectItem({
 }
 
 function ProjectItem(props: ProjectItemType) {
-  const {
-    title,
-    description,
-    details,
-    image,
-    link = '',
-    skills,
-    cateTag = '',
-    isMobile = false,
-  } = props;
+  const { title, image } = props;
   const [open, setOpen] = useState(false);
   const itemRef = useRef<HTMLDivElement>(null);
 

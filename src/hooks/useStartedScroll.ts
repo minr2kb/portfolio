@@ -1,20 +1,17 @@
-import { useScroll } from '@react-spring/web';
-import { useState } from 'react';
+import { useScrollTrigger } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 const useStartedScroll = (containerRef: React.MutableRefObject<HTMLElement>) => {
-  const [startedScroll, setStartedScroll] = useState(false);
-
-  const { scrollY } = useScroll({
-    container: containerRef,
-    onChange: ({ value: { scrollY } }) => {
-      setStartedScroll(scrollY > 0);
-    },
-    default: {
-      immediate: true,
-    },
+  const [scrollTarget, setScrollTarget] = useState<HTMLElement | undefined>(undefined);
+  const trigger = useScrollTrigger({
+    target: scrollTarget,
   });
 
-  return { startedScroll, scrollY };
+  useEffect(() => {
+    if (containerRef.current) setScrollTarget(containerRef.current);
+  }, [containerRef.current]);
+
+  return { startedScroll: trigger };
 };
 
 export default useStartedScroll;
