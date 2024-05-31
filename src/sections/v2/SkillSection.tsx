@@ -3,7 +3,7 @@ import { type SkillItemType } from '@interface/types';
 import { Box, Collapse, Divider, Grid, LinearProgress, Typography } from '@mui/material';
 import CodeEditor from '@uiw/react-textarea-code-editor';
 import React, { useRef, useState } from 'react';
-import { skills } from '~/data/sectionData';
+import { skillsData } from '~/data/sectionData';
 import useDeviceQuery from '~/hooks/useDeviceQuery';
 
 function SkillItem({
@@ -144,7 +144,7 @@ function SkillSection() {
       <Divider />
       <Grid container>
         <Grid mb={5} item>
-          <SkillList skills={skills} />
+          <SkillList skills={skillsData} />
         </Grid>
       </Grid>
     </Box>

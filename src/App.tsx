@@ -1,29 +1,37 @@
 import { ThemeMode } from '@interface/enums';
 import { CssBaseline, ThemeProvider } from '@mui/material';
-import Home from '@pages/Home';
+import React from 'react';
 import { Navigate, RouterProvider, createBrowserRouter } from 'react-router-dom';
-import HomeV2 from '~/pages/HomeV2';
+
+import useDeviceQuery from '@hooks/useDeviceQuery';
 import getTheme from '~/theme';
-import useDeviceQuery from './hooks/useDeviceQuery';
+
+const HomeV1 = React.lazy(() => import('@pages/Home'));
+const HomeV2 = React.lazy(() => import('@pages/HomeV2'));
+const HomeV3 = React.lazy(() => import('@pages/HomeV3'));
 
 function App() {
   const { isMobile } = useDeviceQuery();
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <Navigate to="/v2" replace />,
+      element: <Navigate to="/v3" replace />,
     },
     {
       path: '/v1',
-      element: <Home />,
+      element: <HomeV1 />,
     },
     {
       path: '/v2',
       element: <HomeV2 />,
     },
+    {
+      path: '/v3',
+      element: <HomeV3 />,
+    },
   ]);
 
-  const theme = getTheme(ThemeMode.LIGHT, isMobile);
+  const theme = getTheme(ThemeMode.V3, isMobile);
 
   return (
     <ThemeProvider theme={theme}>

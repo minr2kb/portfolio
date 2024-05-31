@@ -1,6 +1,10 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { Box, useScrollTrigger } from '@mui/material';
+import useBrowserThemeColor from '@hooks/useBrowserThemeColor';
+import useDeviceQuery from '@hooks/useDeviceQuery';
+import useStartedScroll from '@hooks/useStartedScroll';
+import { Box } from '@mui/material';
 import Footer from '@sections/Footer';
+import ContactSection from '@sections/v1/ContactSection';
 import EducationSection from '@sections/v2/EducationSection';
 import ExperienceSection from '@sections/v2/ExperienceSection';
 import IntroSection from '@sections/v2/IntroSection';
@@ -9,9 +13,6 @@ import SkillSection from '@sections/v2/SkillSection';
 import TopNav from '@sections/v2/TopNav';
 import { useEffect, useRef, useState } from 'react';
 import { ParallaxProvider } from 'react-scroll-parallax';
-import useBrowserThemeColor from '~/hooks/useBrowserThemeColor';
-import useDeviceQuery from '~/hooks/useDeviceQuery';
-import ContactSection from '~/sections/v1/ContactSection';
 
 function HomeV2() {
   const { isMobile } = useDeviceQuery();
@@ -20,9 +21,7 @@ function HomeV2() {
 
   useBrowserThemeColor('#1ECCA2');
 
-  const startedScroll = useScrollTrigger({
-    target: containerRef.current ?? undefined,
-  });
+  const { startedScroll } = useStartedScroll(containerRef);
 
   useEffect(() => {
     setScrollElement(containerRef.current);

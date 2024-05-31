@@ -1,6 +1,6 @@
 import { Divider, Grid, Typography } from '@mui/material';
 import EduExpItem from '~/components/ExperienceItem';
-import { educations } from '~/data/sectionData';
+import { educationData } from '~/data/sectionData';
 
 function EducationSection({ open = false }: { open?: boolean }) {
   return (
@@ -8,7 +8,7 @@ function EducationSection({ open = false }: { open?: boolean }) {
       <Typography variant="h2">Education</Typography>
       <Divider sx={{ mb: 2 }} />
 
-      <EduExpItem open={open} {...educations} />
+      <EduExpItem open={open} {...educationData} />
     </Grid>
   );
 }

@@ -12,7 +12,7 @@ import {
   Typography,
 } from '@mui/material';
 import { useState } from 'react';
-import { projects } from '~/data/sectionData';
+import { projectsData } from '~/data/sectionData';
 import useDeviceQuery from '~/hooks/useDeviceQuery';
 import { type ProjectItemType } from '~/interface/types';
 
@@ -120,7 +120,7 @@ function ProjectBlock({
             ·
           </Typography>
           <Typography variant="body2" sx={{ flex: 1, my: 0.3 }} color="text.secondary">
-            {detail}
+            {detail.content}
           </Typography>
         </Grid>
       ))}
@@ -136,7 +136,7 @@ function ProjectSection() {
       <Typography variant="h2">Projects</Typography>
       <Divider />
       {/* TODO: 필터 / 검색기능 */}
-      {projects.slice(0, 3).map(project => (
+      {projectsData.slice(0, 3).map(project => (
         <ProjectBlock
           key={project.title}
           title={project.title}
@@ -151,7 +151,7 @@ function ProjectSection() {
       ))}
 
       <Collapse in={viewMore} unmountOnExit mountOnEnter timeout={{ enter: 1200, exit: 500 }}>
-        {projects.slice(3).map(project => (
+        {projectsData.slice(3).map(project => (
           <ProjectBlock
             key={project.title}
             title={project.title}
@@ -172,7 +172,7 @@ function ProjectSection() {
           setViewMore(!viewMore);
         }}
       >
-        {viewMore ? '접기' : `${projects.length - 3}개 더보기`}{' '}
+        {viewMore ? '접기' : `${projectsData.length - 3}개 더보기`}{' '}
         {viewMore ? <KeyboardArrowUp /> : <KeyboardArrowDown />}
       </Button>
     </Grid>

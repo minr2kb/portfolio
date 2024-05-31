@@ -14,7 +14,7 @@ import {
   Zoom,
 } from '@mui/material';
 import { useRef, useState } from 'react';
-import { projects } from '~/data/sectionData';
+import { projectsData } from '~/data/sectionData';
 import useDeviceQuery from '~/hooks/useDeviceQuery';
 
 function ProjectItem({
@@ -171,7 +171,7 @@ function ProjectItem({
                         ·
                       </Typography>
                       <Typography variant="body2" sx={{ flex: 1, my: 0.3 }} color="text.secondary">
-                        {detail}
+                        {detail.content}
                       </Typography>
                     </Box>
                   ))}
@@ -225,7 +225,7 @@ function ProjectSection() {
       <Divider />
       {/* TODO: 필터 / 검색기능 */}
       <Grid container mt={2} spacing={2} alignItems="center">
-        {projects.slice(0, 8).map(project => (
+        {projectsData.slice(0, 8).map(project => (
           <ProjectItem key={project.title} isMobile={isMobile} {...project} />
         ))}
       </Grid>

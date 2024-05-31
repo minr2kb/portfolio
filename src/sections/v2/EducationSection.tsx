@@ -1,18 +1,7 @@
 import ParallaxItem, { type ParallaxItemProps } from '@components/ParallaxItem';
 import { Box, Divider, Typography } from '@mui/material';
-import EduExpItem, { type EduExpItemType } from '~/components/ExperienceItem';
-
-const academic: EduExpItemType = {
-  title: 'Stony Brook University',
-  subtitle: '2019 Spring - 2022 Fall',
-  logoSrc: '/images/SBU-logo-simp.png',
-  descs: [
-    'Bachelor of Science',
-    '전공: Applied Mathematics and Statistics (응용 수학 통계학)',
-    '부전공: Computer Science (컴퓨터 공학)',
-    'CGPA: 3.98/4.0',
-  ],
-};
+import EduExpItem from '~/components/ExperienceItem';
+import { educationData } from '~/data/sectionData';
 
 const parallaxIcons: ParallaxItemProps[] = [
   {
@@ -64,7 +53,7 @@ function EducationSection({
       <Typography variant="h2">Education</Typography>
       <Divider sx={{ mb: 2 }} />
 
-      <EduExpItem open={open} {...academic} />
+      <EduExpItem open={open} {...educationData} />
 
       {parallax &&
         parallaxIcons.map((parallaxIcon, idx) => (

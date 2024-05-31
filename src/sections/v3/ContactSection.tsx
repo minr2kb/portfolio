@@ -6,9 +6,9 @@ const { mobile, email, githubId, instagramId, linkedIn } = contactsData;
 
 function ContactSection() {
   return (
-    <Grid>
-      <Typography variant="h2">Contacts</Typography>
-      <Divider />
+    <Grid sx={{ color: 'white' }}>
+      <Typography variant="h2">Contacts.</Typography>
+      <Divider orientation="horizontal" sx={{ borderColor: '#999', mt: 1, mb: 3 }} />
       <Grid
         sx={{
           my: 2,
