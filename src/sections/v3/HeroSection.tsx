@@ -212,7 +212,7 @@ function HeroSection() {
           <Grid item xs={isMobile ? 12 : 4}>
             <WidgetCard
               index={0}
-              bgImage="images/me_back.jpg"
+              bgImage="images/me_back.webp"
               onClick={() => onClickNavigator(Sections.ABOUT)}
             >
               <Box
@@ -252,7 +252,7 @@ function HeroSection() {
                     프로젝트
                   </Typography>
                   <img
-                    src="/images/widget_projects.png"
+                    src="/images/widget_projects.webp"
                     style={{ width: '60%', position: 'absolute', top: 20, left: 0 }}
                   />
                 </WidgetCard>
@@ -260,11 +260,11 @@ function HeroSection() {
               <Grid item xs={6}>
                 <WidgetCard
                   index={2}
-                  bgImage="images/me_grad.jpg"
+                  bgImage="images/me_grad.webp"
                   sx={{
                     display: 'flex',
                     backgroundImage:
-                      'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) , url(images/me_grad.jpg)',
+                      'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) , url(images/me_grad.webp)',
                   }}
                   onClick={() => onClickNavigator(Sections.EDUCATION)}
                 >
@@ -282,7 +282,7 @@ function HeroSection() {
             <Grid item xs={12}>
               <WidgetCard index={3} sx={{ px: 0 }}>
                 <img
-                  src="/images/memoji-lg.png"
+                  src="/images/memoji-lg.webp"
                   style={{
                     height: isMobile ? '70%' : '90%',
                     position: 'absolute',
@@ -341,7 +341,7 @@ function HeroSection() {
                 </Typography>
               </Box>
               <img
-                src="/images/widget_career.png"
+                src="/images/widget_career.webp"
                 style={{ width: '90%', position: 'absolute', bottom: 0, right: 0 }}
               />
             </WidgetCard>
