@@ -20,6 +20,8 @@ const WidgetCard: React.FC<WidgetCardProps> = ({
   onClick,
   ...boxProps
 }) => {
+  const { isMobile } = useDeviceQuery();
+
   const cardStyles: SxProps<Theme> = useMemo(
     () => ({
       position: 'relative',
@@ -29,7 +31,7 @@ const WidgetCard: React.FC<WidgetCardProps> = ({
       bgcolor,
       borderRadius: '20px',
       overflow: 'hidden',
-      p: 3,
+      p: isMobile ? 2 : 3,
       cursor: onClick ? 'pointer' : 'auto',
       backgroundImage: bgImage ? `url(${bgImage})` : undefined,
       backgroundSize: bgImage ? 'cover' : undefined,
