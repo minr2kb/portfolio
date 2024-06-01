@@ -5,12 +5,15 @@ const HelloSvg = styled('svg')({
     '0%': {
       strokeDashoffset: 5800,
     },
-    '100%': {
+    '50%': {
       strokeDashoffset: 0,
+    },
+    '100%': {
+      strokeDashoffset: -5800,
     },
   },
   strokeDasharray: '5800px',
-  animation: 'anim__hello linear 5s infinite',
+  animation: 'anim__hello linear 10s infinite',
 });
 
 const HelloAnimation = () => {
@@ -22,7 +25,7 @@ const HelloAnimation = () => {
         style={{
           fill: 'none',
           stroke: '#334155',
-          strokeLinecap: 'square',
+          strokeLinecap: 'round',
           strokeMiterlimit: 10,
           strokeWidth: '35px',
         }}
